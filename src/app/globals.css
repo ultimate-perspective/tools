@@ -43,6 +43,8 @@
   --radius-xl: calc(var(--radius) + 4px);
 
   --color-brand: #8978f7;
+  --color-etsy: #f1641e;
+  --color-shopify: #548738;
 }
 
 :root {

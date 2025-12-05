@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { PinterestInput, ToneOptions, LengthOptions } from "@/types/pinterest";
+import { useProductPreview } from "@/hooks/shop";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
@@ -11,6 +12,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkle } from "lucide-react";
+import { LiaEtsy } from "react-icons/lia";
+import { SiShopify } from "react-icons/si";
 
 interface PinterestGeneratorFormProps {
     onGenerate: (data: PinterestInput) => void;
@@ -18,7 +21,7 @@ interface PinterestGeneratorFormProps {
 }
 
 export default function PinterestGeneratorForm({ onGenerate, isPending }: PinterestGeneratorFormProps) {
-    const [mode, setMode] = useState<'manual' | 'import'>('manual');
+    const [mode, setMode] = useState<'manual' | 'import'>('import');
     const [manualDescription, setManualDescription] = useState("");
     const [importUrl, setImportUrl] = useState("");
     const [platform, setPlatform] = useState<'etsy' | 'shopify'>('etsy');
@@ -26,6 +29,8 @@ export default function PinterestGeneratorForm({ onGenerate, isPending }: Pinter
     const [length, setLength] = useState<LengthOptions>('medium');
     const [includeHashtags, setIncludeHashtags] = useState(true);
     const [includeEmojis, setIncludeEmojis] = useState(true);
+
+    const { data: previewData, isLoading: isLoadingPreview, error: previewError } = useProductPreview(importUrl, platform);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -69,8 +74,8 @@ export default function PinterestGeneratorForm({ onGenerate, isPending }: Pinter
                 <CardContent>
                     <Tabs value={mode} onValueChange={(v) => setMode(v as 'manual' | 'import')} className="w-full">
                         <TabsList className="grid w-full grid-cols-2 mb-6">
+                            <TabsTrigger value="import">Import from Shop</TabsTrigger>
                             <TabsTrigger value="manual">Manual Input</TabsTrigger>
-                            <TabsTrigger value="import">Import URL</TabsTrigger>
                         </TabsList>
 
                         <TabsContent value="manual" className="space-y-4">
@@ -92,12 +97,22 @@ export default function PinterestGeneratorForm({ onGenerate, isPending }: Pinter
                                 <div className="sm:col-span-1 grid gap-2">
                                     <Label>Platform</Label>
                                     <Select value={platform} onValueChange={(v) => setPlatform(v as 'etsy' | 'shopify')}>
-                                        <SelectTrigger>
+                                        <SelectTrigger className="w-full">
                                             <SelectValue placeholder="Select platform" />
                                         </SelectTrigger>
                                         <SelectContent>
-                                            <SelectItem value="etsy">Etsy</SelectItem>
-                                            <SelectItem value="shopify">Shopify</SelectItem>
+                                            <SelectItem value="etsy">
+                                                <div className="flex items-center gap-2">
+                                                    <LiaEtsy className="text-etsy" />
+                                                    Etsy
+                                                </div>
+                                            </SelectItem>
+                                            <SelectItem value="shopify">
+                                                <div className="flex items-center gap-2">
+                                                    <SiShopify className="text-shopify" />
+                                                    Shopify
+                                                </div>
+                                            </SelectItem>
                                         </SelectContent>
                                     </Select>
                                 </div>
@@ -113,6 +128,40 @@ export default function PinterestGeneratorForm({ onGenerate, isPending }: Pinter
                                     />
                                 </div>
                             </div>
+
+                            {/* Product Preview Section */}
+                            {importUrl && (
+                                <div className="mt-4 pt-4 border-t">
+                                    {isLoadingPreview ? (
+                                        <div className="flex items-center justify-center p-8 bg-muted/30 rounded-lg animate-pulse">
+                                            <div className="text-sm text-muted-foreground flex items-center gap-2">
+                                                <Sparkle className="w-4 h-4 animate-spin" />
+                                                Loading preview...
+                                            </div>
+                                        </div>
+                                    ) : previewError ? (
+                                        <div className="p-4 bg-destructive/10 text-destructive text-sm rounded-lg">
+                                            {previewError}
+                                        </div>
+                                    ) : previewData ? (
+                                        <div className="relative group overflow-hidden border rounded-xl bg-card hover:bg-accent/50 transition-colors">
+                                            <div className="flex gap-4 p-3">
+                                                <div className="w-24 h-24 shrink-0 overflow-hidden rounded-lg bg-muted">
+                                                    <img
+                                                        src={previewData.image}
+                                                        alt={previewData.title}
+                                                        className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                                                    />
+                                                </div>
+                                                <div className="flex flex-col gap-1 min-w-0">
+                                                    <h4 className="font-semibold text-sm truncate pr-2">{previewData.title}</h4>
+                                                    <p className="text-xs text-muted-foreground line-clamp-3">{previewData.description}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ) : null}
+                                </div>
+                            )}
                         </TabsContent>
                     </Tabs>
                 </CardContent>
