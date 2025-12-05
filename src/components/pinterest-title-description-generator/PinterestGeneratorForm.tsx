@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
+import { ArrowRight, Sparkle } from "lucide-react";
 
 interface PinterestGeneratorFormProps {
     onGenerate: (data: PinterestInput) => void;
@@ -154,7 +155,7 @@ export default function PinterestGeneratorForm({ onGenerate, isPending }: Pinter
                                         variant="ghost"
                                         size="sm"
                                         onClick={() => setLength(l)}
-                                        className={`flex-1 capitalize shadow-none ${length === l ? "bg-background text-foreground shadow-sm font-medium" : "text-muted-foreground hover:text-foreground"}`}
+                                        className={`flex-1 capitalize shadow-none cursor-pointer ${length === l ? "bg-background text-foreground shadow-sm font-medium hover:bg-background cursor-default" : "text-muted-foreground hover:text-foreground"}`}
                                     >
                                         {l}
                                     </Button>
@@ -163,41 +164,73 @@ export default function PinterestGeneratorForm({ onGenerate, isPending }: Pinter
                         </div>
 
                         <div className="space-y-4">
-                            <div className="flex items-center justify-between space-x-4 border p-3 rounded-lg">
-                                <Label htmlFor="hashtags" className="flex flex-col gap-1 cursor-pointer">
-                                    <span className="font-medium">Include Hashtags</span>
+                            <label
+                                className="flex items-center justify-between cursor-pointer border rounded-xl p-4 shadow-sm bg-card hover:bg-accent/50 transition-colors"
+                            >
+                                <div className="flex flex-col items-start gap-1">
+                                    <span className="font-medium text-sm">Include Hashtags</span>
                                     <span className="font-normal text-xs text-muted-foreground">Add relevant tags to your description</span>
-                                </Label>
+                                </div>
                                 <Switch
-                                    id="hashtags"
                                     checked={includeHashtags}
                                     onCheckedChange={setIncludeHashtags}
                                 />
-                            </div>
+                            </label>
 
-                            <div className="flex items-center justify-between space-x-4 border p-3 rounded-lg">
-                                <Label htmlFor="emojis" className="flex flex-col gap-1 cursor-pointer">
-                                    <span className="font-medium">Include Emojis</span>
+                            <label
+                                className="flex items-center justify-between cursor-pointer border rounded-xl p-4 shadow-sm bg-card hover:bg-accent/50 transition-colors"
+                            >
+                                <div className="flex flex-col items-start gap-1">
+                                    <span className="font-medium text-sm">Include Emojis</span>
                                     <span className="font-normal text-xs text-muted-foreground">Add relevant emojis to title & text</span>
-                                </Label>
+                                </div>
                                 <Switch
-                                    id="emojis"
                                     checked={includeEmojis}
                                     onCheckedChange={setIncludeEmojis}
                                 />
-                            </div>
+                            </label>
                         </div>
                     </div>
                 </CardContent>
             </Card>
 
-            <Button type="submit" size="lg" className="w-full text-lg h-14" disabled={isPending}>
-                {isPending ? (
-                    <>Generating...</>
-                ) : (
-                    <>Generate Content</>
-                )}
-            </Button>
+            <div className="flex justify-center pt-4 w-full">
+                <button
+                    type="submit"
+                    disabled={isPending}
+                    className={`
+                        group relative flex items-center justify-center
+                        w-full h-14 rounded-full
+                        bg-[rgb(20,20,20)] border-none
+                        font-semibold text-white
+                        shadow-[0px_0px_0px_4px_rgba(180,160,255,0.253)]
+                        cursor-pointer transition-all duration-300 overflow-hidden
+                        hover:bg-brand
+                        disabled:opacity-70 disabled:cursor-not-allowed
+                        ${isPending ? "bg-brand" : ""}
+                    `}
+                >
+                    <span className={`
+                        w-4 h-4 transition-all duration-300
+                        ${isPending ? "-translate-y-[220%]" : "group-hover:-translate-y-[220%]"}
+                    `}>
+                        <Sparkle size={16} />
+                    </span>
+
+                    <span className={`
+                        absolute text-white flex items-center justify-center gap-2
+                        transition-all duration-300
+                        transform
+                        ${isPending
+                            ? "translate-y-0 opacity-100"
+                            : "translate-y-[150%] opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+                        }
+                    `}>
+                        {isPending && <Sparkle size={16} className="animate-spin" />}
+                        {isPending ? "Generating..." : "Generate"}
+                    </span>
+                </button>
+            </div>
         </form>
     );
 }

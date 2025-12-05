@@ -1,9 +1,10 @@
 "use client";
 
+import { usePinterestTitleDescription } from "@/hooks/pinterest";
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, Sparkles } from "lucide-react";
 import { PinterestOutput } from "@/types/pinterest";
 
 interface PinterestGeneratorResultProps {
@@ -15,17 +16,17 @@ export default function PinterestGeneratorResult({ data }: PinterestGeneratorRes
 
     if (!data) {
         return (
-            <Card className="sticky top-24 shadow-lg border-primary/10 opacity-60">
-                <CardHeader className="bg-muted/30 border-b pb-4">
-                    <CardTitle className="flex items-center gap-2 text-muted-foreground">
-                        <span className="flex items-center justify-center w-6 h-6 rounded-full bg-muted text-muted-foreground text-xs">✓</span>
-                        Generated Result
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="p-6 h-[400px] flex items-center justify-center text-muted-foreground text-sm text-center">
-                    Click "Generate Content" to see your optimized Pinterest pins here.
-                </CardContent>
-            </Card>
+            <div className="h-full border border-dashed border-gray-200 dark:border-gray-800 rounded-xl flex flex-col items-center justify-center p-8 text-center space-y-3 bg-gray-50/50 dark:bg-gray-900/50 min-h-[400px]">
+                <div className="w-12 h-12 rounded-full bg-white dark:bg-black shadow-sm flex items-center justify-center border border-gray-100 dark:border-gray-800">
+                    <Sparkles className="w-5 h-5 text-gray-400" />
+                </div>
+                <div className="space-y-1">
+                    <h3 className="font-medium text-gray-900 dark:text-gray-100">Ready to Generate</h3>
+                    <p className="text-sm text-gray-500 max-w-[200px] mx-auto">
+                        Fill out the form and click generate to see your optimized content here.
+                    </p>
+                </div>
+            </div>
         );
     }
 
@@ -36,78 +37,73 @@ export default function PinterestGeneratorResult({ data }: PinterestGeneratorRes
     };
 
     return (
-        <Card className="sticky top-24 shadow-lg border-primary/10">
-            <CardHeader className="bg-muted/50 border-b pb-4">
-                <CardTitle className="flex items-center gap-2 text-primary">
-                    <span className="flex items-center justify-center w-6 h-6 rounded-full bg-green-100 text-green-600 text-xs">✓</span>
-                    Generated Result
-                </CardTitle>
-            </CardHeader>
-
-            <CardContent className="p-6 space-y-6">
-                {/* Title Section */}
-                <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                        <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Title</label>
-                        <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => handleCopy(data.title, 'title')}
-                            className="h-6 px-2 text-xs"
-                        >
-                            {copiedField === 'title' ? <Check className="w-3 h-3 mr-1" /> : <Copy className="w-3 h-3 mr-1" />}
-                            {copiedField === 'title' ? 'Copied' : 'Copy'}
-                        </Button>
-                    </div>
-                    <div className="bg-muted p-4 rounded-md font-medium text-sm">
+        <div className="space-y-6 animate-in fade-in duration-500">
+            {/* Title Section */}
+            <div className="group space-y-3">
+                <div className="flex items-center justify-between">
+                    <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest">Title</label>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => handleCopy(data.title, 'title')}
+                        className="h-6 w-6 text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                    >
+                        {copiedField === 'title' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                    </Button>
+                </div>
+                <div className="p-4 bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-xl shadow-sm hover:border-gray-200 dark:hover:border-zinc-700 transition-all duration-300">
+                    <p className="text-sm font-medium leading-relaxed text-gray-900 dark:text-gray-100">
                         {data.title}
-                    </div>
+                    </p>
                 </div>
+            </div>
 
-                {/* Description Section */}
-                <div className="space-y-2">
+            {/* Description Section */}
+            <div className="group space-y-3">
+                <div className="flex items-center justify-between">
+                    <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest">Description</label>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => handleCopy(data.description, 'description')}
+                        className="h-6 w-6 text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                    >
+                        {copiedField === 'description' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                    </Button>
+                </div>
+                <div className="p-4 bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-xl shadow-sm hover:border-gray-200 dark:hover:border-zinc-700 transition-all duration-300">
+                    <p className="text-sm leading-7 text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
+                        {data.description}
+                    </p>
+                </div>
+            </div>
+
+            {/* Hashtags Section */}
+            {data.hashtags.length > 0 && (
+                <div className="group space-y-3">
                     <div className="flex items-center justify-between">
-                        <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Description</label>
+                        <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest">Hashtags</label>
                         <Button
                             variant="ghost"
-                            size="sm"
-                            onClick={() => handleCopy(data.description, 'description')}
-                            className="h-6 px-2 text-xs"
+                            size="icon"
+                            onClick={() => handleCopy(data.hashtags.join(' '), 'hashtags')}
+                            className="h-6 w-6 text-gray-400 hover:text-black dark:hover:text-white transition-colors"
                         >
-                            {copiedField === 'description' ? <Check className="w-3 h-3 mr-1" /> : <Copy className="w-3 h-3 mr-1" />}
-                            {copiedField === 'description' ? 'Copied' : 'Copy'}
+                            {copiedField === 'hashtags' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
                         </Button>
                     </div>
-                    <div className="bg-muted p-4 rounded-md text-sm min-h-[100px] whitespace-pre-wrap leading-relaxed">
-                        {data.description}
+                    <div className="flex flex-wrap gap-2">
+                        {data.hashtags.map((tag, index) => (
+                            <span
+                                key={index}
+                                className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-gray-50 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-zinc-800"
+                            >
+                                #{tag.replace(/^#/, '')}
+                            </span>
+                        ))}
                     </div>
                 </div>
-
-                {/* Hashtags Section */}
-                {data.hashtags.length > 0 && (
-                    <div className="space-y-2">
-                        <div className="flex items-center justify-between">
-                            <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Hashtags</label>
-                            <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={() => handleCopy(data.hashtags.join(' '), 'hashtags')}
-                                className="h-6 px-2 text-xs"
-                            >
-                                {copiedField === 'hashtags' ? <Check className="w-3 h-3 mr-1" /> : <Copy className="w-3 h-3 mr-1" />}
-                                {copiedField === 'hashtags' ? 'Copied' : 'Copy All'}
-                            </Button>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                            {data.hashtags.map((tag, index) => (
-                                <span key={index} className="px-2.5 py-0.5 bg-primary/10 text-primary rounded-full text-xs font-medium">
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                )}
-            </CardContent>
-        </Card>
+            )}
+        </div>
     );
 }
