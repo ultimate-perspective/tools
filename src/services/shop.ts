@@ -1,8 +1,4 @@
-export interface ProductPreview {
-    title: string;
-    description: string;
-    image: string;
-}
+import { ProductPreview } from "@/types/shop";
 
 /**
  * Mock service to get product preview from a shop URL.
