@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  basePath: "/free-tools",
-  assetPrefix: "/free-tools"
+  /* config options here */
+  reactCompiler: true,
+  basePath: "/free-tools"
 };
 
 export default nextConfig;
