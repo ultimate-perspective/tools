@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  basePath: "/free-tools",
+  assetPrefix: "/free-tools"
 };
 
 export default nextConfig;
