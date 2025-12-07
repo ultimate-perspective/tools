@@ -1,9 +1,9 @@
-
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import { llmService } from "@/utils/llm/LLMService";
 import { PinterestInput } from "@/types/pinterest";
+import { withRateLimit } from "@/lib/with-rate-limit";
 
-export async function POST(request: Request) {
+async function postHandler(request: NextRequest) {
     try {
         const body = await request.json();
         const input = body as PinterestInput;
@@ -28,3 +28,5 @@ export async function POST(request: Request) {
         );
     }
 }
+
+export const POST = withRateLimit(postHandler);
