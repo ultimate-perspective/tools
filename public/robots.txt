@@ -1,0 +1,19 @@
+# Robots.txt for Design Instantly
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://designinstantly.com/sitemap.xml
+
+# Disallow API routes
+Disallow: /api/
+
+# Allow all crawlers to access main pages
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

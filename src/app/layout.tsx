@@ -1,9 +1,7 @@
-"use client";
-
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useState } from "react";
-import { Navbar } from "@/components/Navbar";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Navbar } from "@/components/Navbar";
+import Providers from "@/components/Providers";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,22 +14,42 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata: Metadata = {
+  title: {
+    default: "Design Instantly Tools",
+    template: "%s | Design Instantly Tools",
+  },
+  description: "Free design tools for creators and developers.",
+  openGraph: {
+    title: "Design Instantly Tools",
+    description: "Free design tools for creators and developers.",
+    url: "https://designinstantly.com",
+    siteName: "Design Instantly",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Design Instantly Tools",
+    description: "Free design tools for creators and developers.",
+  },
+  metadataBase: new URL("https://designinstantly.com"),
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [queryClient] = useState(() => new QueryClient());
-
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <QueryClientProvider client={queryClient}>
+        <Providers>
           <Navbar />
           {children}
-        </QueryClientProvider>
+        </Providers>
       </body>
     </html>
   );

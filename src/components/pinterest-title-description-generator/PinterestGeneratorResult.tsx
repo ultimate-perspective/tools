@@ -39,13 +39,14 @@ export default function PinterestGeneratorResult({ data }: PinterestGeneratorRes
     return (
         <div className="space-y-6 animate-in fade-in duration-500">
             {/* Title Section */}
-            <div className="group space-y-3">
+            <section className="group space-y-3" aria-labelledby="result-title">
                 <div className="flex items-center justify-between">
-                    <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest">Title</label>
+                    <h3 id="result-title" className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest">Title</h3>
                     <Button
                         variant="ghost"
                         size="icon"
                         onClick={() => handleCopy(data.title, 'title')}
+                        aria-label="Copy title"
                         className="h-6 w-6 text-gray-400 hover:text-black dark:hover:text-white transition-colors"
                     >
                         {copiedField === 'title' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
@@ -56,16 +57,17 @@ export default function PinterestGeneratorResult({ data }: PinterestGeneratorRes
                         {data.title}
                     </p>
                 </div>
-            </div>
+            </section>
 
             {/* Description Section */}
-            <div className="group space-y-3">
+            <section className="group space-y-3" aria-labelledby="result-description">
                 <div className="flex items-center justify-between">
-                    <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest">Description</label>
+                    <h3 id="result-description" className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest">Description</h3>
                     <Button
                         variant="ghost"
                         size="icon"
                         onClick={() => handleCopy(data.description, 'description')}
+                        aria-label="Copy description"
                         className="h-6 w-6 text-gray-400 hover:text-black dark:hover:text-white transition-colors"
                     >
                         {copiedField === 'description' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
@@ -76,17 +78,18 @@ export default function PinterestGeneratorResult({ data }: PinterestGeneratorRes
                         {data.description}
                     </p>
                 </div>
-            </div>
+            </section>
 
             {/* Hashtags Section */}
             {data.hashtags.length > 0 && (
-                <div className="group space-y-3">
+                <section className="group space-y-3" aria-labelledby="result-hashtags">
                     <div className="flex items-center justify-between">
-                        <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest">Hashtags</label>
+                        <h3 id="result-hashtags" className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest">Hashtags</h3>
                         <Button
                             variant="ghost"
                             size="icon"
                             onClick={() => handleCopy(data.hashtags.join(' '), 'hashtags')}
+                            aria-label="Copy hashtags"
                             className="h-6 w-6 text-gray-400 hover:text-black dark:hover:text-white transition-colors"
                         >
                             {copiedField === 'hashtags' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
@@ -102,7 +105,7 @@ export default function PinterestGeneratorResult({ data }: PinterestGeneratorRes
                             </span>
                         ))}
                     </div>
-                </div>
+                </section>
             )}
         </div>
     );
