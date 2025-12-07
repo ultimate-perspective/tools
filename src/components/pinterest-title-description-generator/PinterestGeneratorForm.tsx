@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { PinterestInput, ToneOptions, LengthOptions } from "@/types/pinterest";
-import { useProductPreview } from "@/hooks/shop";
+import { ShopProduct } from "@/types/shop";
+import { useShopProducts } from "@/hooks/shop";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
@@ -30,7 +31,15 @@ export default function PinterestGeneratorForm({ onGenerate, isPending }: Pinter
     const [includeHashtags, setIncludeHashtags] = useState(true);
     const [includeEmojis, setIncludeEmojis] = useState(true);
 
-    const { data: previewData, isLoading: isLoadingPreview, error: previewError } = useProductPreview(importUrl, platform);
+    // New state for selected product
+    const [selectedProduct, setSelectedProduct] = useState<ShopProduct | null>(null);
+
+    // Fetch products
+    const { data: products, isLoading: isLoadingProducts, error: productsError } = useShopProducts(importUrl, platform);
+
+    // Reset selection when URL or platform changes
+    // (This might be better handled in a useEffect, or just let the user re-select)
+    // Actually, distinct URLs usually mean new products.
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -51,9 +60,17 @@ export default function PinterestGeneratorForm({ onGenerate, isPending }: Pinter
                 config,
             };
         } else {
+            // For import mode, we pass the selected product details if available
             inputData = {
                 mode: 'import',
-                importInput: { url: importUrl, platform },
+                importInput: {
+                    url: importUrl,
+                    platform,
+                    selectedProduct: selectedProduct ? {
+                        title: selectedProduct.title,
+                        description: selectedProduct.description
+                    } : undefined
+                },
                 config,
             };
         }
@@ -117,49 +134,84 @@ export default function PinterestGeneratorForm({ onGenerate, isPending }: Pinter
                                     </Select>
                                 </div>
                                 <div className="sm:col-span-2 grid gap-2">
-                                    <Label htmlFor="url">Product URL</Label>
+                                    <Label htmlFor="url">Shop URL</Label>
                                     <Input
                                         id="url"
                                         type="url"
-                                        placeholder="https://..."
+                                        placeholder={platform === 'etsy' ? "https://www.etsy.com/shop/YourShopName" : "https://yourshop.com/products/..."}
                                         value={importUrl}
-                                        onChange={(e) => setImportUrl(e.target.value)}
+                                        onChange={(e) => {
+                                            setImportUrl(e.target.value);
+                                            setSelectedProduct(null); // Reset selection on URL change
+                                        }}
                                         required={mode === 'import'}
                                     />
                                 </div>
                             </div>
 
-                            {/* Product Preview Section */}
+                            {/* Product List / Selection */}
                             {importUrl && (
                                 <div className="mt-4 pt-4 border-t">
-                                    {isLoadingPreview ? (
+                                    {isLoadingProducts ? (
                                         <div className="flex items-center justify-center p-8 bg-muted/30 rounded-lg animate-pulse">
                                             <div className="text-sm text-muted-foreground flex items-center gap-2">
                                                 <Sparkle className="w-4 h-4 animate-spin" />
-                                                Loading preview...
+                                                Fetching products...
                                             </div>
                                         </div>
-                                    ) : previewError ? (
+                                    ) : productsError ? (
                                         <div className="p-4 bg-destructive/10 text-destructive text-sm rounded-lg">
-                                            {previewError}
+                                            {productsError}
                                         </div>
-                                    ) : previewData ? (
-                                        <div className="relative group overflow-hidden border rounded-xl bg-card hover:bg-accent/50 transition-colors">
-                                            <div className="flex gap-4 p-3">
-                                                <div className="w-24 h-24 shrink-0 overflow-hidden rounded-lg bg-muted">
-                                                    <img
-                                                        src={previewData.image}
-                                                        alt={previewData.title}
-                                                        className="w-full h-full object-cover transition-transform group-hover:scale-105"
-                                                    />
-                                                </div>
-                                                <div className="flex flex-col gap-1 min-w-0">
-                                                    <h4 className="font-semibold text-sm truncate pr-2">{previewData.title}</h4>
-                                                    <p className="text-xs text-muted-foreground line-clamp-3">{previewData.description}</p>
-                                                </div>
+                                    ) : products.length > 0 ? (
+                                        <div className="space-y-4">
+                                            <Label>Select a Product</Label>
+                                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[400px] overflow-y-auto pr-2">
+                                                {products.map((product) => (
+                                                    <div
+                                                        key={product.id || product.url}
+                                                        onClick={() => setSelectedProduct(product)}
+                                                        className={`relative group cursor-pointer border rounded-lg overflow-hidden transition-all ${selectedProduct?.url === product.url ? 'ring-2 ring-primary border-primary' : 'hover:border-primary/50'}`}
+                                                    >
+                                                        <div className="aspect-square bg-muted">
+                                                            {product.image && (
+                                                                <img
+                                                                    src={product.image}
+                                                                    alt={product.title}
+                                                                    className="w-full h-full object-cover"
+                                                                />
+                                                            )}
+                                                        </div>
+                                                        <div className="p-2">
+                                                            <h4 className="text-xs font-medium truncate" title={product.title}>{product.title}</h4>
+                                                            {product.price && <p className="text-xs text-muted-foreground">{product.price}</p>}
+                                                        </div>
+                                                        {selectedProduct?.url === product.url && (
+                                                            <div className="absolute top-2 right-2 w-5 h-5 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs">
+                                                                ✓
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                ))}
                                             </div>
+
+                                            {selectedProduct && (
+                                                <div className="p-3 bg-accent/20 border border-accent rounded-lg flex items-start gap-3">
+                                                    <div className="w-12 h-12 bg-muted rounded shrink-0 overflow-hidden">
+                                                        {selectedProduct.image && <img src={selectedProduct.image} className="w-full h-full object-cover" />}
+                                                    </div>
+                                                    <div className="min-w-0">
+                                                        <p className="text-sm font-medium">Selected: {selectedProduct.title}</p>
+                                                        <p className="text-xs text-muted-foreground truncate">{selectedProduct.description ? selectedProduct.description.substring(0, 60) + "..." : "No description"}</p>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
-                                    ) : null}
+                                    ) : (
+                                        <div className="text-sm text-muted-foreground p-4 text-center">
+                                            No products found. Please check the URL.
+                                        </div>
+                                    )}
                                 </div>
                             )}
                         </TabsContent>
@@ -246,7 +298,7 @@ export default function PinterestGeneratorForm({ onGenerate, isPending }: Pinter
             <div className="flex justify-center pt-4 w-full">
                 <button
                     type="submit"
-                    disabled={isPending}
+                    disabled={isPending || (mode === 'import' && !selectedProduct)}
                     className={`
                         group relative flex items-center justify-center
                         w-full h-14 rounded-full

@@ -1,22 +1,23 @@
 import { useState, useEffect } from 'react';
-import { getProductPreview, ProductPreview } from '@/services/shop';
+import { fetchShopProducts } from '@/services/shop';
+import { ShopProduct } from '@/types/shop';
 
-interface UseProductPreviewResult {
-    data: ProductPreview | null;
+interface UseShopProductsResult {
+    data: ShopProduct[];
     isLoading: boolean;
     error: string | null;
 }
 
-export function useProductPreview(url: string, platform: 'etsy' | 'shopify') {
-    const [result, setResult] = useState<UseProductPreviewResult>({
-        data: null,
+export function useShopProducts(url: string, platform: 'etsy' | 'shopify') {
+    const [result, setResult] = useState<UseShopProductsResult>({
+        data: [],
         isLoading: false,
         error: null,
     });
 
     useEffect(() => {
         if (!url) {
-            setResult({ data: null, isLoading: false, error: null });
+            setResult({ data: [], isLoading: false, error: null });
             return;
         }
 
@@ -36,18 +37,18 @@ export function useProductPreview(url: string, platform: 'etsy' | 'shopify') {
         let isMounted = true;
         setResult((prev) => ({ ...prev, isLoading: true, error: null }));
 
-        const fetchPreview = async () => {
+        const fetchProducts = async () => {
             try {
-                const data = await getProductPreview(url, platform);
+                const data = await fetchShopProducts(url, platform);
                 if (isMounted) {
                     setResult({ data, isLoading: false, error: null });
                 }
             } catch (err) {
                 if (isMounted) {
                     setResult({
-                        data: null,
+                        data: [],
                         isLoading: false,
-                        error: "Failed to fetch product preview. Please check the URL.",
+                        error: "Failed to fetch products. Please check the URL.",
                     });
                 }
             }
@@ -55,7 +56,7 @@ export function useProductPreview(url: string, platform: 'etsy' | 'shopify') {
 
         // Debounce fetching
         const timeoutId = setTimeout(() => {
-            fetchPreview();
+            fetchProducts();
         }, 800);
 
         return () => {
@@ -66,3 +67,4 @@ export function useProductPreview(url: string, platform: 'etsy' | 'shopify') {
 
     return result;
 }
+

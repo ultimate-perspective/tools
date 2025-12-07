@@ -24,6 +24,10 @@ export interface ImportInput {
     importInput: {
         url: string;
         platform: 'etsy' | 'shopify';
+        selectedProduct?: {
+            title: string;
+            description: string;
+        };
     };
     config: CommonConfig;
 }

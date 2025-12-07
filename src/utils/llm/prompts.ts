@@ -32,32 +32,20 @@ Guidelines:
 `;
 
 export function getUserPrompt(data: PinterestInput): string {
-    const { config, mode } = data;
-    let productContext = "";
+  const { config, mode } = data;
+  let productContext = "";
 
-    if (mode === 'manual') {
-        productContext = data.manualInput.description;
+  if (mode === 'manual') {
+    productContext = data.manualInput.description;
+  } else {
+    if (data.importInput.selectedProduct) {
+      productContext = `Title: ${data.importInput.selectedProduct.title}\nDescription: ${data.importInput.selectedProduct.description}`;
     } else {
-        productContext = `Product URL: ${data.importInput.url}\nPlatform: ${data.importInput.platform}`;
-        // In a real scenario, we might pass more scraped data here, 
-        // but the instruction implies we just need to integrate the backend structure now.
-        // If the mock service provided image/title/desc, we would pass that. 
-        // For now, we'll rely on what the user sends or what we can infer.
-        // *Correction*: The prompt says "scraped content". 
-        // The current frontend flow sends the URL. The backend *could* scrape it, 
-        // OR the frontend could send the preview data it already fetched.
-        // Looking at the plan, we are building the backend to handle the generation. 
-        // The `PinterestInput` type has `url` for import mode. 
-        // To make this robust, the LLM really needs the content. 
-        // Since we don't have a real scraper yet, we will ask the LLM to "infer" or "simulate" based on the URL/Platform 
-        // OR we relies on the description if the user provides it (which is only in manual mode).
-        // Let's assume for this task (backend integration) we pass the URL and let the LLM hallucinate/infer 
-        // or (better) we ask the user to pass the `previewData` if available?
-        // checking `PinterestInput` again... it only has `url` and `platform`.
-        // We will stick to the types defined.
+      productContext = `Product URL: ${data.importInput.url}\nPlatform: ${data.importInput.platform}`;
     }
+  }
 
-    return `
+  return `
 Product Context:
 ${productContext}
 
