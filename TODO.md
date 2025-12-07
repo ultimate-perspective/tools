@@ -1,3 +1,1 @@
-- rate limit
 - theme
-- use json+ld only

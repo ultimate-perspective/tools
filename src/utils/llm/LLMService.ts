@@ -10,7 +10,7 @@ class LLMService {
 
     private constructor() {
         this.model = new ChatOpenAI({
-            modelName: "gpt-4o", // or "gpt-3.5-turbo"
+            modelName: "gpt-4o-mini", // or "gpt-3.5-turbo"
             temperature: 0.7,
             // API key is automatically read from names like OPENAI_API_KEY env var
         });

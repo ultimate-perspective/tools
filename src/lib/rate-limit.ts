@@ -5,7 +5,7 @@ import { NextRequest } from 'next/server';
 // Create rate limiters
 export const ipRateLimiter = new Ratelimit({
     redis,
-    limiter: Ratelimit.slidingWindow(10, '10 s'), // 10 requests per 10 seconds
+    limiter: Ratelimit.slidingWindow(10, '1m'),
     analytics: true,
     prefix: 'ratelimit:ip',
 });
