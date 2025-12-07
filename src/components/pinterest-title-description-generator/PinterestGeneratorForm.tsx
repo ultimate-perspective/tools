@@ -12,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkle } from "lucide-react";
+import { ArrowRight, Sparkle, X } from "lucide-react";
 import { LiaEtsy } from "react-icons/lia";
 import { SiShopify } from "react-icons/si";
 
@@ -196,13 +196,55 @@ export default function PinterestGeneratorForm({ onGenerate, isPending }: Pinter
                                             </div>
 
                                             {selectedProduct && (
-                                                <div className="p-3 bg-accent/20 border border-accent rounded-lg flex items-start gap-3">
-                                                    <div className="w-12 h-12 bg-muted rounded shrink-0 overflow-hidden">
-                                                        {selectedProduct.image && <img src={selectedProduct.image} className="w-full h-full object-cover" />}
-                                                    </div>
-                                                    <div className="min-w-0">
-                                                        <p className="text-sm font-medium">Selected: {selectedProduct.title}</p>
-                                                        <p className="text-xs text-muted-foreground truncate">{selectedProduct.description ? selectedProduct.description.substring(0, 60) + "..." : "No description"}</p>
+                                                <div className="relative overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm animate-in fade-in slide-in-from-bottom-2">
+                                                    <div className="grid grid-cols-[100px_1fr]">
+                                                        {/* Image Section */}
+                                                        <div className="relative aspect-square bg-muted">
+                                                            {selectedProduct.image ? (
+                                                                <img
+                                                                    src={selectedProduct.image}
+                                                                    alt={selectedProduct.title}
+                                                                    className="w-full h-full object-cover"
+                                                                />
+                                                            ) : (
+                                                                <div className="w-full h-full flex items-center justify-center text-muted-foreground bg-muted/50">
+                                                                    <Sparkle className="w-6 h-6 opacity-20" />
+                                                                </div>
+                                                            )}
+                                                        </div>
+
+                                                        {/* Content Section */}
+                                                        <div className="p-4 flex flex-col justify-center min-w-0">
+                                                            <div className="flex items-start justify-between gap-4">
+                                                                <div className="space-y-1 min-w-0 flex-1">
+                                                                    <div className="flex items-center gap-2">
+                                                                        <h4 className="font-semibold text-base truncate pr-2" title={selectedProduct.title}>
+                                                                            {selectedProduct.title}
+                                                                        </h4>
+                                                                        {selectedProduct.price && (
+                                                                            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-secondary text-secondary-foreground shrink-0">
+                                                                                {selectedProduct.price}
+                                                                            </span>
+                                                                        )}
+                                                                    </div>
+
+                                                                    <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+                                                                        {selectedProduct.description || "No description available"}
+                                                                    </p>
+                                                                </div>
+
+                                                                <Button
+                                                                    type="button"
+                                                                    variant="ghost"
+                                                                    size="icon"
+                                                                    className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10 -mt-2 -mr-2"
+                                                                    onClick={() => setSelectedProduct(null)}
+                                                                    title="Remove selection"
+                                                                >
+                                                                    <X className="h-4 w-4" />
+                                                                </Button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             )}
