@@ -2,6 +2,7 @@ import { NextResponse, NextRequest } from "next/server";
 import { llmService } from "@/utils/llm/LLMService";
 import { PinterestInput } from "@/types/pinterest";
 import { withRateLimit } from "@/lib/with-rate-limit";
+import { withSameOriginProtection } from "@/lib/with-same-origin-protection";
 
 async function postHandler(request: NextRequest) {
     try {
@@ -29,4 +30,4 @@ async function postHandler(request: NextRequest) {
     }
 }
 
-export const POST = withRateLimit(postHandler);
+export const POST = withRateLimit(withSameOriginProtection(postHandler));

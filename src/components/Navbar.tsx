@@ -21,18 +21,16 @@ export function Navbar() {
                                 <Image
                                     src="/logo/png/logo_light.png"
                                     alt="Design Instantly Logo"
+                                    className="h-10 w-auto dark:hidden"
                                     width={140}
                                     height={40}
-                                    className="h-10 w-auto dark:hidden"
-                                    priority
                                 />
                                 <Image
                                     src="/logo/png/logo_dark.png"
                                     alt="Design Instantly Logo"
+                                    className="h-10 w-auto hidden dark:block"
                                     width={140}
                                     height={40}
-                                    className="h-10 w-auto hidden dark:block"
-                                    priority
                                 />
                             </Link>
                         </div>
@@ -63,9 +61,6 @@ export function Navbar() {
                                     <div className="flex flex-col gap-4 mt-8">
                                         <Button variant="ghost" asChild className="justify-start text-lg px-2" onClick={() => setOpen(false)}>
                                             <Link href="/">Home</Link>
-                                        </Button>
-                                        <Button variant="ghost" asChild className="justify-start text-lg px-2" onClick={() => setOpen(false)}>
-                                            <Link href="/tools">Tools</Link>
                                         </Button>
                                     </div>
                                 </SheetContent>
