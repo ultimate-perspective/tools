@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
@@ -18,19 +17,15 @@ export function Navbar() {
                         {/* Logo */}
                         <div className="flex-shrink-0">
                             <Link href="/" onClick={() => setOpen(false)}>
-                                <Image
-                                    src="/logo/png/logo_light.png"
+                                <img
+                                    src="/free-tools/logo/png/logo_light.png"
                                     alt="Design Instantly Logo"
                                     className="h-10 w-auto dark:hidden"
-                                    width={140}
-                                    height={40}
                                 />
-                                <Image
-                                    src="/logo/png/logo_dark.png"
+                                <img
+                                    src="/free-tools/logo/png/logo_dark.png"
                                     alt="Design Instantly Logo"
                                     className="h-10 w-auto hidden dark:block"
-                                    width={140}
-                                    height={40}
                                 />
                             </Link>
                         </div>
@@ -41,10 +36,11 @@ export function Navbar() {
                                 <Button variant="ghost" asChild className="text-sm font-medium">
                                     <Link href="/">Home</Link>
                                 </Button>
-                                <Button variant="ghost" asChild className="text-sm font-medium">
-                                    <Link href="/tools">Tools</Link>
+                                <Button asChild className="text-sm font-medium">
+                                    <a href="https://designinstantly.com" target="_blank" rel="noopener noreferrer">
+                                        Get Started
+                                    </a>
                                 </Button>
-                                {/* Add more links as needed */}
                             </div>
                         </div>
 
@@ -61,6 +57,11 @@ export function Navbar() {
                                     <div className="flex flex-col gap-4 mt-8">
                                         <Button variant="ghost" asChild className="justify-start text-lg px-2" onClick={() => setOpen(false)}>
                                             <Link href="/">Home</Link>
+                                        </Button>
+                                        <Button asChild className="justify-start text-lg px-2 mt-4">
+                                            <a href="https://designinstantly.com" target="_blank" rel="noopener noreferrer">
+                                                Get Started
+                                            </a>
                                         </Button>
                                     </div>
                                 </SheetContent>
