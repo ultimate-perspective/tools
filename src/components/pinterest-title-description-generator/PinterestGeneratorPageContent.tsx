@@ -3,6 +3,7 @@
 import PinterestGeneratorForm from "@/components/pinterest-title-description-generator/PinterestGeneratorForm";
 import PinterestGeneratorResult from "@/components/pinterest-title-description-generator/PinterestGeneratorResult";
 import PinterestGeneratorGuide from "@/components/pinterest-title-description-generator/PinterestGeneratorGuide";
+import PinterestGeneratorFAQ from "@/components/pinterest-title-description-generator/PinterestGeneratorFAQ";
 import { usePinterestTitleDescription } from "@/hooks/pinterest";
 
 export default function PinterestGeneratorPageContent() {
@@ -32,6 +33,7 @@ export default function PinterestGeneratorPageContent() {
                     </section>
                 </div>
                 <PinterestGeneratorGuide />
+                <PinterestGeneratorFAQ />
             </div>
         </main>
     );
