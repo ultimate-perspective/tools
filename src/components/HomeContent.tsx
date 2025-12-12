@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Sparkles, Zap, Type } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Type, ShoppingBag } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -13,10 +13,18 @@ const tools = [
         icon: Type,
         category: "Pinterest",
         isAvailable: true,
+    },
+    {
+        name: "Etsy Listing Title & Description Generator",
+        description: "Create high-converting, SEO-optimized Etsy titles, descriptions, and tags in seconds.",
+        href: "/etsy-listing-generator",
+        icon: ShoppingBag,
+        category: "Etsy",
+        isAvailable: true,
     }
 ];
 
-const categories = ["All", "Pinterest"];
+const categories = ["All", "Pinterest", "Etsy"];
 
 export function HomeContent() {
     const [activeCategory, setActiveCategory] = useState("All");
@@ -111,8 +119,8 @@ export function HomeContent() {
                             aria-selected={activeCategory === category}
                             onClick={() => setActiveCategory(category)}
                             className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${activeCategory === category
-                                    ? "bg-foreground text-background"
-                                    : "border border-border bg-background text-muted-foreground hover:bg-muted hover:text-foreground"
+                                ? "bg-foreground text-background"
+                                : "border border-border bg-background text-muted-foreground hover:bg-muted hover:text-foreground"
                                 }`}
                         >
                             {category}

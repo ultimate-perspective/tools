@@ -171,7 +171,7 @@ export default function PinterestGeneratorForm({ onGenerate, isPending }: Pinter
                                                     <div
                                                         key={product.id || product.url}
                                                         onClick={() => setSelectedProduct(product)}
-                                                        className={`relative group cursor-pointer border rounded-lg overflow-hidden transition-all ${selectedProduct?.url === product.url ? 'ring-2 ring-primary border-primary' : 'hover:border-primary/50'}`}
+                                                        className={`relative group cursor-pointer border rounded-lg overflow-hidden transition-all ${selectedProduct?.url === product.url ? 'border-primary' : 'hover:border-primary/50'}`}
                                                     >
                                                         <div className="aspect-square bg-muted">
                                                             {product.image && (
