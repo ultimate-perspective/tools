@@ -3,6 +3,9 @@
 import EtsyTitleDescriptionGeneratorForm from "./EtsyTitleDescriptionGeneratorForm";
 import EtsyTitleDescriptionGeneratorResult from "./EtsyTitleDescriptionGeneratorResult";
 import { useEtsyTitleDescriptionGenerator } from "@/hooks/etsy";
+import EtsyGeneratorGuide from "./EtsyGeneratorGuide";
+import EtsyGeneratorGuidelines from "./EtsyGeneratorGuidelines";
+import EtsyGeneratorFAQ from "./EtsyGeneratorFAQ";
 
 export default function EtsyTitleDescriptionGeneratorPageContent() {
     const { mutate, isPending, data } = useEtsyTitleDescriptionGenerator();
@@ -30,6 +33,10 @@ export default function EtsyTitleDescriptionGeneratorPageContent() {
                         <EtsyTitleDescriptionGeneratorResult data={data || null} />
                     </section>
                 </div>
+
+                <EtsyGeneratorGuide />
+                <EtsyGeneratorGuidelines />
+                <EtsyGeneratorFAQ />
             </div>
         </main>
     );

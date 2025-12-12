@@ -74,10 +74,10 @@ export default function EtsyTitleDescriptionGeneratorForm({ onGenerate, isPendin
                         <div className="flex items-center">
                             <Label htmlFor="product">What are you selling? <span className="text-red-500">*</span></Label>
                             <EtsyFieldInfo
-                                title="Product Name"
-                                description="The core item you are selling. Be direct and specific."
+                                title="Product Name (Main Noun)"
+                                description="The precise word buyers use to find this. This is your primary keyword."
                                 examples={["Ceramic Coffee Mug", "Gold Moonstone Ring", "Vintage Denim Jacket"]}
-                                tips={["Use the main noun that customers would search for.", "Keep it simple; add details in other fields."]}
+                                tips={["Use the most descriptive name.", "Avoid broad terms like 'gift' here; be specific."]}
                             />
                         </div>
                         <div className="relative">
@@ -97,10 +97,10 @@ export default function EtsyTitleDescriptionGeneratorForm({ onGenerate, isPendin
                         <div className="flex items-center">
                             <Label htmlFor="details">Key details (color, material, size) <span className="text-red-500">*</span></Label>
                             <EtsyFieldInfo
-                                title="Key Attributes"
-                                description="Objective facts about the product. These are crucial for the title."
+                                title="Key Attributes = Keywords"
+                                description="Attributes function like keywords. Be specific about materials, colors, and styles."
                                 examples={["Sage Green, Stoneware, 12oz", "14k Gold Vermeil, Size 7", "100% Cotton, Unisex Medium"]}
-                                tips={["List the 3 most important traits: Color, Material, Size.", "Focus on objective, visible descriptors."]}
+                                tips={["Combine attributes for long-tail phrases (e.g. 'Minimalist Silver Studs').", "Focus on objective traits."]}
                                 warnings={["Avoid subjective words like 'beautiful' or 'cute' here."]}
                             />
                         </div>
@@ -119,10 +119,10 @@ export default function EtsyTitleDescriptionGeneratorForm({ onGenerate, isPendin
                         <div className="flex items-center">
                             <Label htmlFor="specialFeatures">What makes it special? (2–3 points) <span className="text-red-500">*</span></Label>
                             <EtsyFieldInfo
-                                title="Unique Selling Points"
-                                description="Why should someone buy this specific item? Used for description hooks."
+                                title="Hooks & Unique Selling Points"
+                                description="Why should someone buy THIS one? Used to write compelling descriptions."
                                 examples={["Hand-thrown on a wheel", "Uses eco-friendly non-toxic glazes", "Vintage 1970s authentic"]}
-                                tips={["Highlight craftsmanship or origin.", "Mention unique processes or limited availability."]}
+                                tips={["Highlight craftsmanship or origin.", "If generic, rewrite to be more descriptive."]}
                             />
                         </div>
                         <Textarea
@@ -140,10 +140,10 @@ export default function EtsyTitleDescriptionGeneratorForm({ onGenerate, isPendin
                         <div className="flex items-center">
                             <Label htmlFor="targetAudience">Target use case / audience (optional)</Label>
                             <EtsyFieldInfo
-                                title="Use Case & Audience"
-                                description="Who is this for and how will they use it? Helps with tags."
+                                title="Long-Tail Opportunities"
+                                description="Specific occasions or recipients create 'long-tail' keyword chances."
                                 examples={["Coffee lovers who want a cozy morning", "Gift for mom", "Boho kitchen decor"]}
-                                tips={["Mention specific occasions (Wedding, Birthday).", "Define the style (Boho, Minimalist, Rustic)."]}
+                                tips={["Think: Who is this for? (e.g. 'Gifts for Dog Lovers').", "Shopper habits matter; match their intent."]}
                                 warnings={["Don't spam generic 'For Her' unless relevant."]}
                             />
                         </div>
@@ -161,10 +161,10 @@ export default function EtsyTitleDescriptionGeneratorForm({ onGenerate, isPendin
                         <div className="flex items-center">
                             <Label htmlFor="additionalInfo">Additional information (optional)</Label>
                             <EtsyFieldInfo
-                                title="Logistics & Extras"
-                                description="Final details for the description block."
+                                title="Ranking Factors"
+                                description="Details that impact conversion and ranking."
                                 examples={["Dishwasher safe", "Ships in 24 hours", "Includes free gift box"]}
-                                tips={["Include care instructions.", "Mention packaging or shipping speed."]}
+                                tips={["Mention competitive shipping (under $6 helps ranking).", "Clear return policies improve trust."]}
                             />
                         </div>
                         <Textarea
