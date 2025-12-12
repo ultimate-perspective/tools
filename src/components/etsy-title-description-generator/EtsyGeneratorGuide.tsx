@@ -6,7 +6,7 @@ export default function EtsyGeneratorGuide() {
         <Card className="mt-12">
             <CardHeader>
                 <CardTitle className="text-2xl font-bold">
-                    How to use this free Etsy title & description generator <span className="text-muted-foreground font-normal text-lg">(quick guide)</span>
+                    How to use this Free Etsy Listing Title & Description Generator <span className="text-muted-foreground font-normal text-lg">(quick guide)</span>
                 </CardTitle>
             </CardHeader>
             <CardContent className="space-y-8">

@@ -15,10 +15,10 @@ export default function EtsyTitleDescriptionGeneratorPageContent() {
             <div className="max-w-7xl mx-auto">
                 <header className="text-center mb-12">
                     <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl mb-4">
-                        Etsy Title & Description Generator
+                        Free Etsy Listing Generator
                     </h1>
                     <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                        Create high-converting, SEO-optimized Etsy listings in seconds. Stand out in search results with AI-crafted titles, descriptions, and tags.
+                        Create high-converting, SEO-optimized Etsy titles and descriptions in seconds. Stand out in search results with crafted title, description and tags.
                     </p>
                 </header>
 
