@@ -2,7 +2,8 @@
 import { ChatOpenAI } from "@langchain/openai";
 import { SystemMessage, HumanMessage } from "@langchain/core/messages";
 import { PinterestInput, PinterestOutput } from "@/types/pinterest";
-import { SYSTEM_PROMPT, getUserPrompt } from "./prompts";
+import { EtsyTitleDescriptionGeneratorInput, EtsyTitleDescriptionGeneratorOutput } from "@/types/etsy";
+import { SYSTEM_PROMPT, getUserPrompt, ETSY_TITLE_DESCRIPTION_SYSTEM_PROMPT, getEtsyTitleDescriptionUserPrompt } from "./prompts";
 
 class LLMService {
     private static instance: LLMService;
@@ -49,6 +50,29 @@ class LLMService {
         } catch (error) {
             console.error("Failed to parse LLM response:", content);
             throw new Error("Failed to generate valid JSON content from LLM.");
+        }
+    }
+
+    public async generateEtsyTitleDescription(input: EtsyTitleDescriptionGeneratorInput): Promise<EtsyTitleDescriptionGeneratorOutput> {
+        const systemMsg = new SystemMessage(ETSY_TITLE_DESCRIPTION_SYSTEM_PROMPT);
+        const userMsg = new HumanMessage(getEtsyTitleDescriptionUserPrompt(input));
+
+        const response = await this.model.invoke([systemMsg, userMsg], {
+            response_format: { type: "json_object" }
+        });
+
+        const content = response.content as string;
+
+        try {
+            const parsed = JSON.parse(content);
+            return {
+                title: parsed.title || "Untitled Listing",
+                description: parsed.description || "No description generated.",
+                tags: Array.isArray(parsed.tags) ? parsed.tags : [],
+            };
+        } catch (error) {
+            console.error("Failed to parse Etsy LLM response:", content);
+            throw new Error("Failed to generate valid JSON content from LLM for Etsy.");
         }
     }
 }

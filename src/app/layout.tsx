@@ -25,7 +25,12 @@ export const metadata: Metadata = {
     title: "Design Instantly Tools",
     description: "Free design tools for creators and developers.",
   },
-  metadataBase: new URL("https://designinstantly.com"),
+  icons: {
+    icon: [
+      { url: '/free-tools/logo/png/icon_light.png', media: '(prefers-color-scheme: light)' },
+      { url: '/free-tools/logo/png/icon_dark.png', media: '(prefers-color-scheme: dark)' },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -35,11 +40,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Favicon and theme-based switching */}
-        <link rel="icon" type="image/png" href="/free-tools/logo/png/icon_light.png" media="(prefers-color-scheme: light)" />
-        <link rel="icon" type="image/png" href="/free-tools/logo/png/icon_dark.png" media="(prefers-color-scheme: dark)" />
-      </head>
       <body
         className={`${inter.className} antialiased`}
       >
