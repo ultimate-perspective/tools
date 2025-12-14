@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://designinstantly.com/free-tools"
+  const baseUrl = "https://www.designinstantly.com/free-tools"
 
   return [
     {
