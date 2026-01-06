@@ -21,6 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/etsy-profit-calculator`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
     }
   ]
 }
