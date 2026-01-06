@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://designinstantly.com"
+  const baseUrl = "https://www.designinstantly.com/free-tools"
 
   return [
     {
@@ -12,6 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/pinterest-title-description-generator`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/etsy-listing-title-description-generator`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,

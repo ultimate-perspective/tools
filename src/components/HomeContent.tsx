@@ -17,7 +17,7 @@ const tools = [
     {
         name: "Etsy Listing Title & Description Generator",
         description: "Create high-converting, SEO-optimized Etsy titles, descriptions, and tags in seconds.",
-        href: "/etsy-listing-generator",
+        href: "/etsy-listing-title-description-generator",
         icon: ShoppingBag,
         category: "Etsy",
         isAvailable: true,
