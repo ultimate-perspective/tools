@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Sparkles, Zap, Type, ShoppingBag } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Type, ShoppingBag, Calculator } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -19,6 +19,14 @@ const tools = [
         description: "Create high-converting, SEO-optimized Etsy titles, descriptions, and tags in seconds.",
         href: "/etsy-listing-generator",
         icon: ShoppingBag,
+        category: "Etsy",
+        isAvailable: true,
+    },
+    {
+        name: "Etsy Profit Calculator",
+        description: "Calculate your exact Etsy fees, profit margins, and actual earnings per sale.",
+        href: "/etsy-profit-calculator",
+        icon: Calculator,
         category: "Etsy",
         isAvailable: true,
     }
@@ -166,47 +174,6 @@ export function HomeContent() {
                 </div>
             </section>
 
-            {/* CTA Section */}
-            <section className="border-t border-border bg-muted/30">
-                <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
-                    <div className="flex flex-col items-center text-center">
-                        <h2 className="max-w-2xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl text-balance">
-                            Ready to Create Better Content?
-                        </h2>
-                        <p className="mt-4 max-w-xl text-lg text-muted-foreground">
-                            Start using our free AI tools today. No signup required, no credit card needed.
-                        </p>
-                        <Button asChild size="lg" className="mt-8 rounded-full px-8 h-12">
-                            <a href="https://designinstantly.com" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2">
-                                Get Started for Free
-                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                            </a>
-                        </Button>
-                    </div>
-                </div>
-            </section>
-
-            {/* Footer */}
-            <footer className="border-t border-border bg-background">
-                <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-                    <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-                        <div className="flex items-center gap-3">
-                            <img
-                                src="/free-tools/logo/png/logo_light.png"
-                                alt="Design Instantly Logo"
-                                className="h-10 w-auto dark:hidden"
-                            />
-                            <img
-                                src="/free-tools/logo/png/logo_dark.png"
-                                alt="Design Instantly Logo"
-                                className="h-10 w-auto hidden dark:block"
-                            />
-                            <span className="sr-only">Design Instantly</span>
-                        </div>
-                        <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Design Instantly</p>
-                    </div>
-                </div>
-            </footer>
         </div>
     );
 }
