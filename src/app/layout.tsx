@@ -8,6 +8,7 @@ import Footer from "@/components/common/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.designinstantly.com/free-tools"),
   title: {
     default: "Design Instantly Tools",
     template: "%s | Design Instantly Tools",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Design Instantly Tools",
     description: "Free design tools for creators and developers.",
-    url: "https://designinstantly.com",
+    url: "https://www.designinstantly.com/free-tools",
     siteName: "Design Instantly",
     locale: "en_US",
     type: "website",
