@@ -41,6 +41,31 @@ export class EtsyProfitCalculatorEngine {
         // 1. Revenue
         const revenue = inputs.sellingPrice + inputs.shippingCharged;
         
+        // If no revenue, return zero state (no fees applied)
+        if (revenue <= 0) {
+            const totalCosts = inputs.itemCost + inputs.shippingCost;
+            return {
+                revenue: 0,
+                totalRevenue: 0,
+                discountAmount: 0,
+                listingFee: 0,
+                transactionFee: 0,
+                processingFee: 0,
+                adCost: 0,
+                totalFees: 0,
+                totalCosts,
+                netProfit: totalCosts > 0 ? -totalCosts : 0,
+                profitMargin: 0,
+                roi: 0,
+                breakdown: {
+                    profitPct: 0,
+                    feesPct: 0,
+                    productCostPct: 0,
+                    shippingPct: 0
+                }
+            };
+        }
+        
         // 2. Discount
         // Discount usually applies to the item price, not shipping? 
         // Etsy coupons: "Percent off" applies to item price only.
