@@ -13,10 +13,10 @@ export const metadata: Metadata = {
     default: "Design Instantly Tools",
     template: "%s | Design Instantly Tools",
   },
-  description: "Free design tools for creators and developers.",
+  description: "Free tools for ecommerce sellers.",
   openGraph: {
     title: "Design Instantly Tools",
-    description: "Free design tools for creators and developers.",
+    description: "Free tools for ecommerce sellers.",
     url: "https://www.designinstantly.com/free-tools",
     siteName: "Design Instantly",
     locale: "en_US",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Design Instantly Tools",
-    description: "Free design tools for creators and developers.",
+    description: "Free tools for ecommerce sellers.",
   },
   icons: {
     icon: [

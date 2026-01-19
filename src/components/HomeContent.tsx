@@ -50,7 +50,7 @@ export function HomeContent() {
                     <div className="flex flex-col items-center text-center">
                         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-1.5 text-sm text-muted-foreground">
                             <Sparkles className="h-4 w-4" aria-hidden="true" />
-                            <span>100% Free Tools for Creators</span>
+                            <span>100% Free Tools for Ecommerce Sellers</span>
                         </div>
                         <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl text-balance">
                             Free Tools to Design
@@ -91,7 +91,7 @@ export function HomeContent() {
                             <dd className="text-3xl font-bold text-foreground">10K+</dd>
                         </div>
                         <div className="flex flex-col items-center gap-1 text-center">
-                            <dt className="text-sm font-medium text-muted-foreground">Happy Creators</dt>
+                            <dt className="text-sm font-medium text-muted-foreground">Happy Sellers</dt>
                             <dd className="text-3xl font-bold text-foreground">2K+</dd>
                         </div>
                         <div className="flex flex-col items-center gap-1 text-center">
