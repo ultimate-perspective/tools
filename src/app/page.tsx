@@ -3,14 +3,16 @@ import { HomeContent } from "@/components/HomeContent";
 import { Graph } from "schema-dts";
 
 export const metadata: Metadata = {
-  title: "Free AI Tools for Creators",
+  title: "Free AI Tools for Ecommerce Sellers | Design Instantly",
   description:
-    "Design Instantly offers free AI-powered tools to create stunning Pinterest titles, descriptions, and social media content. Perfect for Etsy sellers, Shopify owners, and content creators.",
+    "Design Instantly provides free AI tools to help ecommerce sellers create high-quality marketing content across platforms. Ideal for Etsy, Shopify, Amazon, and online stores.",
   openGraph: {
-    title: "Design Instantly | Free AI-Powered Design Tools for Creators",
+    title: "Design Instantly — Free AI Tools for Ecommerce Sellers",
     description:
-      "Create stunning Pinterest titles, descriptions, and social media content in seconds with free AI-powered tools.",
+      "Create marketing content faster with free AI tools built for ecommerce sellers across all platforms.",
     url: "https://www.designinstantly.com/free-tools",
+    siteName: "Design Instantly",
+    type: "website",
   },
   alternates: {
     canonical: "https://www.designinstantly.com/free-tools",
