@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Sparkles, Zap, Type, ShoppingBag, Calculator } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import CTA from "@/components/common/CTA";
 
 const tools = [
     {
@@ -45,7 +46,7 @@ export function HomeContent() {
         <div className="min-h-screen bg-background">
             {/* Hero Section */}
             <section className="relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-muted/50 via-background to-background" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-muted/50 via-background to-background" />
                 <div className="relative mx-auto max-w-6xl px-4 pt-20 pb-16 sm:px-6 lg:px-8">
                     <div className="flex flex-col items-center text-center">
                         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-1.5 text-sm text-muted-foreground">
@@ -173,6 +174,8 @@ export function HomeContent() {
                     ))}
                 </div>
             </section>
+
+            <CTA />
 
         </div>
     );

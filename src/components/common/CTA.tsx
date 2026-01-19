@@ -16,7 +16,7 @@ export default function CTA({ className, variant = "default" }: CTAProps) {
 
 function CTASection({ className }: { className?: string }) {
     return (
-        <section className={cn("relative overflow-hidden bg-background py-16 md:py-24", className)}>
+        <section className={cn("relative overflow-hidden bg-background py-16 md:py-24 border-t", className)}>
             {/* Pattern */}
             <div
                 className="absolute inset-0 opacity-[0.4]"
