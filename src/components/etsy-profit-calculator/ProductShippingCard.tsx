@@ -36,7 +36,7 @@ export default function ProductShippingCard({ form }: ProductShippingCardProps) 
                                     id="sellingPrice"
                                     name={field.name}
                                     type="number"
-                                    placeholder="45.00"
+                                    placeholder="0"
                                     value={field.state.value}
                                     onBlur={field.handleBlur}
                                     onChange={(e) => field.handleChange(e.target.value)}
@@ -62,7 +62,7 @@ export default function ProductShippingCard({ form }: ProductShippingCardProps) 
                                     id="shippingCharged"
                                     name={field.name}
                                     type="number"
-                                    placeholder="5.00"
+                                    placeholder="0"
                                     value={field.state.value}
                                     onBlur={field.handleBlur}
                                     onChange={(e) => field.handleChange(e.target.value)}

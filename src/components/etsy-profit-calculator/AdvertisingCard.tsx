@@ -131,7 +131,7 @@ export default function AdvertisingCard({ form }: AdvertisingCardProps) {
                                                     id="etsyAdsCost"
                                                     name={field.name}
                                                     type="number"
-                                                    placeholder="100.00"
+                                                    placeholder="0"
                                                     value={field.state.value}
                                                     onBlur={field.handleBlur}
                                                     onChange={(e) => field.handleChange(e.target.value)}

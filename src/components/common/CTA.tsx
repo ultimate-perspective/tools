@@ -1,8 +1,22 @@
+import { cn } from "@/lib/utils"
 import { TrendingUp, Sparkle, Download, Wand2, CalendarClock } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-export default function DesignInstantlyCTA() {
+interface CTAProps {
+    className?: string
+    variant?: "default" | "card"
+}
+
+export default function CTA({ className, variant = "default" }: CTAProps) {
+    if (variant === "card") {
+        return <CTACard className={className} />
+    }
+    return <CTASection className={className} />
+}
+
+function CTASection({ className }: { className?: string }) {
     return (
-        <section className="relative overflow-hidden bg-background py-16 md:py-24">
+        <section className={cn("relative overflow-hidden bg-background py-16 md:py-24", className)}>
             {/* Pattern */}
             <div
                 className="absolute inset-0 opacity-[0.4]"
@@ -55,6 +69,47 @@ export default function DesignInstantlyCTA() {
                 </div>
             </div>
         </section>
+    )
+}
+
+function CTACard({ className }: { className?: string }) {
+    return (
+        <Card className={cn("overflow-hidden border-2", className)}>
+            <CardHeader className="text-center pb-2 pt-10 px-6 sm:px-10">
+                <div className="mx-auto mb-6 rounded-full bg-muted/50 px-4 py-1.5 text-sm font-medium text-muted-foreground backdrop-blur-sm border border-border/50 w-fit">
+                    Selling on <span className="text-foreground font-semibold">Etsy</span> or <span className="text-foreground font-semibold">Shopify</span>?
+                </div>
+                <CardTitle className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl max-w-2xl mx-auto leading-tight">
+                    Automate your social media to generate <span className="text-pinterest">more sales</span>
+                </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-8 text-center px-6 sm:px-10 pb-12">
+                <p className="mx-auto max-w-2xl text-lg text-muted-foreground font-light leading-relaxed">
+                    Stop wasting hours on design. Automatically create and schedule high-converting content that drives free traffic and revenue to your store.
+                </p>
+
+                {/* CTA Button - Lime Sticker Style */}
+                <div className="flex justify-center py-2">
+                    <div className="relative group">
+                        <a
+                            href="/generate-pins"
+                            className="cursor-pointer flex items-center justify-center py-2 relative h-12 rounded-full border-2 border-black bg-brand px-8 text-lg font-bold text-white shadow-[5px_5px_0px_0px_#000000] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-[2px_2px_0px_0px_#000000] hover:bg-brand active:shadow-none active:translate-x-[5px] active:translate-y-[5px]"
+                        >
+                            Get Started for Free
+                        </a>
+                        <Sparkle className="absolute -right-2 -top-4 h-6 w-6 fill-white text-black stroke-[1.5px] animate-pulse z-10" />
+                    </div>
+                </div>
+
+                {/* Icons Row */}
+                <div className="flex flex-wrap item-center justify-center gap-x-8 gap-y-6 text-muted-foreground/80 pt-2">
+                    <IconItem icon={Download} label="IMPORT" />
+                    <IconItem icon={Wand2} label="GENERATE" />
+                    <IconItem icon={CalendarClock} label="SCHEDULE" />
+                    <IconItem icon={TrendingUp} label="SCALE" />
+                </div>
+            </CardContent>
+        </Card>
     )
 }
 

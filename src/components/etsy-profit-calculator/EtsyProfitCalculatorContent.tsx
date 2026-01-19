@@ -9,6 +9,7 @@ import ResultsCard from "./ResultsCard"
 import { EtsyProfitCalculatorEngine } from "@/utils/engines/EtsyProfitCalculatorEngine"
 import EtsyProfitCalculatorGuide from "./EtsyProfitCalculatorGuide"
 import EtsyProfitCalculatorFAQ from "./EtsyProfitCalculatorFAQ"
+import CTA from "@/components/common/CTA"
 
 const defaultValues = {
     sellingPrice: "",
@@ -85,8 +86,11 @@ export default function EtsyProfitCalculatorContent() {
                     </aside>
                 </div>
 
+                <CTA variant="card" className="mt-12"/>
+                
                 <EtsyProfitCalculatorGuide />
                 <EtsyProfitCalculatorFAQ />
+
             </div>
         </main>
     )

@@ -36,7 +36,7 @@ export default function CostsCard({ form }: CostsCardProps) {
                                     id="itemCost"
                                     name={field.name}
                                     type="number"
-                                    placeholder="12.50"
+                                    placeholder="0"
                                     value={field.state.value}
                                     onBlur={field.handleBlur}
                                     onChange={(e) => field.handleChange(e.target.value)}
@@ -62,7 +62,7 @@ export default function CostsCard({ form }: CostsCardProps) {
                                     id="shippingCost"
                                     name={field.name}
                                     type="number"
-                                    placeholder="4.25"
+                                    placeholder="0"
                                     value={field.state.value}
                                     onBlur={field.handleBlur}
                                     onChange={(e) => field.handleChange(e.target.value)}
