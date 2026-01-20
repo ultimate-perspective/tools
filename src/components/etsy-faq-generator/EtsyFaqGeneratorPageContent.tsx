@@ -166,7 +166,7 @@ export default function EtsyFaqGeneratorPageContent() {
 
     return (
         <main className="min-h-screen bg-gray-50 dark:bg-black pt-16 pb-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
+            <article className="max-w-7xl mx-auto">
                 {/* Header */}
                 <header className="mb-16 flex flex-col items-center text-center">
                     <div className="mb-6 inline-flex item-center justify-center rounded-full border border-orange-200 bg-orange-50/50 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#F1641E] backdrop-blur-sm dark:border-orange-900/30 dark:bg-orange-900/10 dark:text-orange-400">
@@ -185,11 +185,12 @@ export default function EtsyFaqGeneratorPageContent() {
 
                 <div className="flex flex-col lg:flex-row gap-6 items-start">
                     {/* Left Column: Form & Results */}
-                    <section className="w-full lg:w-3/5">
+                    <section className="w-full lg:w-3/5" aria-labelledby="generator-heading">
+                        <h2 id="generator-heading" className="sr-only">Generator Form & Results</h2>
                         <Card className="shadow-sm">
                             <CardHeader className="border-b gap-0">
                                 <CardTitle className="flex items-center gap-2 text-base font-semibold text-gray-900 dark:text-gray-100">
-                                    <Store className="w-5 h-5 text-gray-500" />
+                                    <Store className="w-5 h-5 text-gray-500" aria-hidden="true" />
                                     Shop Details
                                 </CardTitle>
                             </CardHeader>
@@ -238,7 +239,7 @@ export default function EtsyFaqGeneratorPageContent() {
                                 <div className="border-b pb-6 space-y-4">
                                     <CardHeader className="border-b gap-0">
                                         <CardTitle className="flex items-center gap-2 text-base font-semibold text-gray-900 dark:text-gray-100">
-                                            <MessageSquare className="w-5 h-5 text-gray-500" />
+                                            <MessageSquare className="w-5 h-5 text-gray-500" aria-hidden="true" />
                                             Generated FAQs
                                             <Badge variant="secondary" className="self-end bg-blue-50 text-blue-700 hover:bg-blue-100 dark:bg-blue-900/20 dark:text-blue-400 px-3 py-1 text-xs font-medium">
                                                 {activeFaqs.length} Generated
@@ -284,7 +285,7 @@ export default function EtsyFaqGeneratorPageContent() {
                                         w-4 h-4 transition-all duration-300
                                         ${isGenerating ? "-translate-y-[220%]" : "group-hover:-translate-y-[220%]"}
                                     `}>
-                                        <Sparkles size={16} />
+                                        <Sparkles size={16} aria-hidden="true" />
                                     </span>
 
                                     <span className={`
@@ -296,7 +297,7 @@ export default function EtsyFaqGeneratorPageContent() {
                                             : "translate-y-[150%] opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
                                         }
                                     `}>
-                                        {isGenerating && <Sparkles size={16} className="animate-spin" />}
+                                        {isGenerating && <Sparkles size={16} className="animate-spin" aria-hidden="true" />}
                                         {isGenerating ? "Generating..." : (hasGenerated ? "Add more FAQs" : "Generate FAQs")}
                                     </span>
                                 </button>
@@ -305,7 +306,7 @@ export default function EtsyFaqGeneratorPageContent() {
                     </section>
 
                     {/* Right Column: Dashboard */}
-                    <aside className="w-full lg:w-2/5 lg:sticky lg:top-22 space-y-6">
+                    <aside className="w-full lg:w-2/5 lg:sticky lg:top-22 space-y-6" aria-label="FAQ Dashboard">
                         <EtsyFaqDashboard
                             stats={stats}
                             onCopyAll={handleCopyAll}
@@ -316,9 +317,14 @@ export default function EtsyFaqGeneratorPageContent() {
 
                 <CTA variant="card" className="mt-12" />
 
-                <EtsyFaqGeneratorGuide />
-                <EtsyFaqGeneratorFAQ />
-            </div>
+                <section aria-labelledby="guide-heading">
+                    <EtsyFaqGeneratorGuide />
+                </section>
+
+                <section aria-labelledby="faq-heading">
+                    <EtsyFaqGeneratorFAQ />
+                </section>
+            </article>
         </main>
     );
 }
@@ -359,8 +365,9 @@ function FaqItem({
                         <button
                             onClick={() => setIsExpanded(!isExpanded)}
                             className="mt-1 text-gray-400 hover:text-gray-600 transition-colors focus:outline-none cursor-pointer"
+                            aria-label={isExpanded ? "Collapse FAQ" : "Expand FAQ"}
                         >
-                            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                            {isExpanded ? <ChevronUp className="w-4 h-4" aria-hidden="true" /> : <ChevronDown className="w-4 h-4" aria-hidden="true" />}
                         </button>
                         <div className="space-y-1.5 w-full">
                             <h4 className="text-base font-semibold text-gray-900 dark:text-gray-100 leading-tight">
@@ -378,8 +385,9 @@ function FaqItem({
                                 onClick={() => onRewrite(faq.id)}
                                 disabled={isRewriting}
                                 className="h-8 px-3 text-xs font-medium border-gray-200 hover:bg-gray-50 hover:text-gray-900 dark:border-gray-700 dark:hover:bg-gray-800"
+                                aria-label="Rewrite this FAQ"
                             >
-                                <RefreshCw className={`w-3 h-3 mr-1.5 ${isRewriting ? 'animate-spin' : ''}`} />
+                                <RefreshCw className={`w-3 h-3 mr-1.5 ${isRewriting ? 'animate-spin' : ''}`} aria-hidden="true" />
                                 Rewrite
                             </Button>
                             <Button
@@ -387,16 +395,18 @@ function FaqItem({
                                 size="icon"
                                 onClick={() => onCopy(faq.id)}
                                 className="h-8 w-8 text-gray-400 hover:text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
+                                aria-label="Copy this FAQ"
                             >
-                                {isCopied ? <Check className="w-4 h-4 text-green-600" /> : <Copy className="w-4 h-4" />}
+                                {isCopied ? <Check className="w-4 h-4 text-green-600" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
                             </Button>
                             <Button
                                 variant="ghost"
                                 size="icon"
                                 onClick={() => onDelete(faq.id)}
                                 className="h-8 w-8 text-gray-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
+                                aria-label="Delete this FAQ"
                             >
-                                <Trash2 className="w-4 h-4" />
+                                <Trash2 className="w-4 h-4" aria-hidden="true" />
                             </Button>
                         </div>
                     </div>
@@ -410,6 +420,7 @@ function FaqItem({
                                         value={editedAnswer}
                                         onChange={(e) => setEditedAnswer(e.target.value)}
                                         className="min-h-[100px] bg-gray-50 dark:bg-gray-900 resize-none text-sm"
+                                        aria-label="Edit Answer"
                                     />
                                     <div className="flex gap-2 justify-end">
                                         <Button size="sm" variant="ghost" onClick={() => setIsEditing(false)}>Cancel</Button>
@@ -420,6 +431,15 @@ function FaqItem({
                                 <div
                                     onClick={() => setIsEditing(true)}
                                     className="group relative p-4 bg-gray-50 dark:bg-gray-900/50 rounded-lg text-sm text-gray-600 dark:text-gray-300 leading-relaxed cursor-text hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-800"
+                                    role="button"
+                                    aria-label="Click to edit answer"
+                                    tabIndex={0}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            e.preventDefault();
+                                            setIsEditing(true);
+                                        }
+                                    }}
                                 >
                                     {faq.answer}
                                     <div className="absolute bottom-2 right-3 text-[10px] text-gray-400 font-medium">

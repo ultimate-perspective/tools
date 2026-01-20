@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import { Menu, Type, ShoppingBag, Calculator, Home, ArrowRight, X } from "lucide-react";
+import { Menu, Type, ShoppingBag, Calculator, Home, ArrowRight, X, User, HelpCircle } from "lucide-react";
 import { useState, ElementType } from "react";
 import { cn } from "@/lib/utils";
 
@@ -135,19 +135,33 @@ export function Navbar() {
                                                 delay={2}
                                             />
                                             <MobileLink
+                                                href="/etsy-bio-generator"
+                                                label="Etsy Bio"
+                                                icon={User}
+                                                onClick={() => setOpen(false)}
+                                                delay={3}
+                                            />
+                                            <MobileLink
+                                                href="/etsy-faq-generator"
+                                                label="Etsy FAQs"
+                                                icon={HelpCircle}
+                                                onClick={() => setOpen(false)}
+                                                delay={4}
+                                            />
+                                            <MobileLink
                                                 href="/etsy-profit-calculator"
                                                 label="Profit Calculator"
                                                 icon={Calculator}
                                                 onClick={() => setOpen(false)}
                                                 isNew
-                                                delay={3}
+                                                delay={5}
                                             />
                                         </div>
                                     </div>
 
                                     {/* Mobile Footer - Fixed */}
                                     <div className="px-6 py-6 border-t border-border/40 bg-background/80 backdrop-blur-sm shrink-0">
-                                        <div className="bg-gradient-to-br from-muted/40 to-muted/20 rounded-xl p-5 border border-border/50 transition-all duration-300 hover:shadow-lg hover:border-border">
+                                        <div className="bg-linear-to-br from-muted/40 to-muted/20 rounded-xl p-5 border border-border/50 transition-all duration-300 hover:shadow-lg hover:border-border">
                                             <p className="text-sm font-semibold text-foreground mb-1">
                                                 Unlock full potential
                                             </p>

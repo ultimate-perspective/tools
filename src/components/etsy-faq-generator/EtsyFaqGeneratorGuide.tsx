@@ -49,72 +49,76 @@ export default function EtsyFaqGeneratorGuide() {
     return (
         <div className="mt-16 space-y-12">
             {/* How to Use */}
-            <div>
-                <h2 className="text-2xl font-bold text-center mb-8">How to Use the FAQ Generator</h2>
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <section aria-labelledby="how-to-use-heading">
+                <h2 id="how-to-use-heading" className="text-2xl font-bold text-center mb-8">How to Use the FAQ Generator</h2>
+                <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 list-none p-0">
                     {steps.map((step, index) => (
-                        <Card key={step.title} className="relative">
-                            <CardHeader className="pb-2">
-                                <div className="flex items-center gap-3">
-                                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                                        <step.icon className="h-5 w-5 text-primary" />
+                        <li key={step.title}>
+                            <Card className="relative h-full">
+                                <CardHeader className="pb-2">
+                                    <div className="flex items-center gap-3">
+                                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                                            <step.icon className="h-5 w-5 text-primary" aria-hidden="true" />
+                                        </div>
+                                        <span className="text-sm font-medium text-muted-foreground">
+                                            Step {index + 1}
+                                        </span>
                                     </div>
-                                    <span className="text-sm font-medium text-muted-foreground">
-                                        Step {index + 1}
-                                    </span>
-                                </div>
-                                <CardTitle className="text-lg mt-2">{step.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-sm text-muted-foreground">{step.description}</p>
-                            </CardContent>
-                        </Card>
+                                    <CardTitle className="text-lg mt-2">{step.title}</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                                </CardContent>
+                            </Card>
+                        </li>
                     ))}
-                </div>
-            </div>
+                </ol>
+            </section>
 
             {/* Tips */}
-            <div>
-                <h2 className="text-2xl font-bold text-center mb-8">Tips for Great Etsy FAQs</h2>
-                <div className="grid gap-4 md:grid-cols-2">
+            <section aria-labelledby="tips-heading">
+                <h2 id="tips-heading" className="text-2xl font-bold text-center mb-8">Tips for Great Etsy FAQs</h2>
+                <ul className="grid gap-4 md:grid-cols-2 list-none p-0">
                     {tips.map((tip) => (
-                        <div key={tip.title} className="flex gap-3 p-4 rounded-lg bg-muted/50">
-                            <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <li key={tip.title} className="flex gap-3 p-4 rounded-lg bg-muted/50">
+                            <CheckCircle className="h-5 w-5 text-green-600 shrink-0 mt-0.5" aria-hidden="true" />
                             <div>
                                 <h3 className="font-medium">{tip.title}</h3>
                                 <p className="text-sm text-muted-foreground mt-1">{tip.description}</p>
                             </div>
-                        </div>
+                        </li>
                     ))}
-                </div>
-            </div>
+                </ul>
+            </section>
 
             {/* Why FAQs Matter */}
-            <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-                <CardContent className="p-6 md:p-8">
-                    <h2 className="text-xl font-bold mb-4">Why FAQs Matter for Your Etsy Shop</h2>
-                    <div className="grid gap-4 md:grid-cols-3 text-sm">
-                        <div>
-                            <h3 className="font-medium mb-1">Reduce Support Messages</h3>
-                            <p className="text-muted-foreground">
-                                Clear FAQs answer common questions before buyers need to message you, saving time.
-                            </p>
+            <section aria-labelledby="why-matter-heading">
+                <Card className="bg-linear-to-br from-primary/5 to-primary/10 border-primary/20">
+                    <CardContent>
+                        <h2 id="why-matter-heading" className="text-xl font-bold mb-4">Why FAQs Matter for Your Etsy Shop</h2>
+                        <div className="grid gap-4 md:grid-cols-3 text-sm">
+                            <div>
+                                <h3 className="font-medium mb-1">Reduce Support Messages</h3>
+                                <p className="text-muted-foreground">
+                                    Clear FAQs answer common questions before buyers need to message you, saving time.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 className="font-medium mb-1">Build Buyer Confidence</h3>
+                                <p className="text-muted-foreground">
+                                    Transparent policies and helpful information make buyers more likely to purchase.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 className="font-medium mb-1">Improve SEO</h3>
+                                <p className="text-muted-foreground">
+                                    FAQs naturally include keywords that help your listings appear in search results.
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <h3 className="font-medium mb-1">Build Buyer Confidence</h3>
-                            <p className="text-muted-foreground">
-                                Transparent policies and helpful information make buyers more likely to purchase.
-                            </p>
-                        </div>
-                        <div>
-                            <h3 className="font-medium mb-1">Improve SEO</h3>
-                            <p className="text-muted-foreground">
-                                FAQs naturally include keywords that help your listings appear in search results.
-                            </p>
-                        </div>
-                    </div>
-                </CardContent>
-            </Card>
+                    </CardContent>
+                </Card>
+            </section>
         </div>
     );
 }

@@ -8,7 +8,16 @@ const PAGE_URL = `${BASE_URL}/free-tools/etsy-faq-generator`;
 export const metadata: Metadata = {
     title: 'Free Etsy FAQ Generator | Create Professional Shop FAQs in Seconds',
     description: 'Generate professional, helpful FAQs for your Etsy shop. Reduce buyer questions, build trust, and improve conversions with AI-powered FAQ generation.',
-    keywords: ['etsy faq generator', 'etsy shop faqs', 'etsy policies', 'etsy seller tools', 'etsy questions answers', 'shop faq template', 'etsy help'],
+    keywords: [
+        'etsy faq generator',
+        'etsy shop faqs',
+        'etsy policies generator',
+        'etsy seller tools',
+        'etsy customer service templates',
+        'shop faq template',
+        'etsy listing faqs',
+        'etsy help text'
+    ],
     alternates: {
         canonical: PAGE_URL,
     },

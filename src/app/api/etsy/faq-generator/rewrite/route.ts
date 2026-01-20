@@ -18,8 +18,6 @@ async function postHandler(request: NextRequest) {
 
         const result = await llmService.rewriteEtsyFaq(input);
 
-        console.log("Rewritten Etsy FAQ:", result);
-
         return NextResponse.json(result);
     } catch (error) {
         console.error("Error in Etsy FAQ rewrite API:", error);
