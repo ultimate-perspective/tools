@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Sparkles, Zap, Type, ShoppingBag, Calculator } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Type, ShoppingBag, Calculator, User } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import CTA from "@/components/common/CTA";
@@ -20,6 +20,14 @@ const tools = [
         description: "Create high-converting, SEO-optimized Etsy titles, descriptions, and tags in seconds.",
         href: "/etsy-listing-title-description-generator",
         icon: ShoppingBag,
+        category: "Etsy",
+        isAvailable: true,
+    },
+    {
+        name: "Etsy Bio Generator",
+        description: "Generate a professional, SEO-optimized Etsy shop bio that tells your story and connects with buyers.",
+        href: "/etsy-bio-generator",
+        icon: User,
         category: "Etsy",
         isAvailable: true,
     },

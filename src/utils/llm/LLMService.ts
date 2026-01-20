@@ -3,7 +3,15 @@ import { ChatOpenAI } from "@langchain/openai";
 import { SystemMessage, HumanMessage } from "@langchain/core/messages";
 import { PinterestInput, PinterestOutput } from "@/types/pinterest";
 import { EtsyTitleDescriptionGeneratorInput, EtsyTitleDescriptionGeneratorOutput } from "@/types/etsy";
-import { SYSTEM_PROMPT, getUserPrompt, ETSY_TITLE_DESCRIPTION_SYSTEM_PROMPT, getEtsyTitleDescriptionUserPrompt } from "./prompts";
+import { EtsyBioGeneratorInput, EtsyBioGeneratorOutput } from "@/types/etsy/bio-generator";
+import { 
+    SYSTEM_PROMPT, 
+    getUserPrompt, 
+    ETSY_TITLE_DESCRIPTION_SYSTEM_PROMPT, 
+    getEtsyTitleDescriptionUserPrompt,
+    ETSY_BIO_GENERATOR_SYSTEM_PROMPT,
+    getEtsyBioUserPrompt
+} from "./prompts";
 
 class LLMService {
     private static instance: LLMService;
@@ -73,6 +81,28 @@ class LLMService {
         } catch (error) {
             console.error("Failed to parse Etsy LLM response:", content);
             throw new Error("Failed to generate valid JSON content from LLM for Etsy.");
+        }
+    }
+
+    public async generateEtsyBio(input: EtsyBioGeneratorInput): Promise<EtsyBioGeneratorOutput> {
+        const systemMsg = new SystemMessage(ETSY_BIO_GENERATOR_SYSTEM_PROMPT);
+        const userMsg = new HumanMessage(getEtsyBioUserPrompt(input));
+
+        const response = await this.model.invoke([systemMsg, userMsg], {
+            response_format: { type: "json_object" }
+        });
+
+        const content = response.content as string;
+
+        try {
+            const parsed = JSON.parse(content);
+            return {
+                headline: parsed.headline || "Welcome to my shop",
+                fullBio: parsed.fullBio || "No bio generated.",
+            };
+        } catch (error) {
+            console.error("Failed to parse Etsy Bio LLM response:", content);
+            throw new Error("Failed to generate valid JSON content from LLM for Etsy Bio.");
         }
     }
 }
