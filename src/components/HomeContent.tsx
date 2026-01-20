@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Sparkles, Zap, Type, ShoppingBag, Calculator, User } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Type, ShoppingBag, Calculator, User, HelpCircle } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import CTA from "@/components/common/CTA";
@@ -36,6 +36,14 @@ const tools = [
         description: "Calculate your exact Etsy fees, profit margins, and actual earnings per sale.",
         href: "/etsy-profit-calculator",
         icon: Calculator,
+        category: "Etsy",
+        isAvailable: true,
+    },
+    {
+        name: "Etsy FAQ Generator",
+        description: "Generate professional FAQs for your shop to reduce buyer questions and build trust.",
+        href: "/etsy-faq-generator",
+        icon: HelpCircle,
         category: "Etsy",
         isAvailable: true,
     }
