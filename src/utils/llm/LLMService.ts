@@ -1,10 +1,10 @@
-
 import { ChatOpenAI } from "@langchain/openai";
 import { SystemMessage, HumanMessage } from "@langchain/core/messages";
 import { PinterestInput, PinterestOutput } from "@/types/pinterest";
 import { EtsyTitleDescriptionGeneratorInput, EtsyTitleDescriptionGeneratorOutput } from "@/types/etsy";
 import { EtsyBioGeneratorInput, EtsyBioGeneratorOutput } from "@/types/etsy/bio-generator";
 import { EtsyFaqGeneratorInput, EtsyFaqGeneratorOutput, EtsyFaqRewriteInput, EtsyFaqRewriteOutput } from "@/types/etsy/faq-generator";
+import { EtsyShopNameGeneratorInput, EtsyShopNameGeneratorOutput } from "@/types/etsy/shop-name-generator";
 import { 
     SYSTEM_PROMPT, 
     getUserPrompt, 
@@ -15,7 +15,9 @@ import {
     ETSY_FAQ_GENERATOR_SYSTEM_PROMPT,
     getEtsyFaqUserPrompt,
     ETSY_FAQ_REWRITE_SYSTEM_PROMPT,
-    getEtsyFaqRewriteUserPrompt
+    getEtsyFaqRewriteUserPrompt,
+    ETSY_SHOP_NAME_GENERATOR_SYSTEM_PROMPT,
+    getEtsyShopNameUserPrompt
 } from "./prompts";
 
 class LLMService {
@@ -152,6 +154,27 @@ class LLMService {
         } catch {
             console.error("Failed to parse Etsy FAQ Rewrite LLM response:", content);
             throw new Error("Failed to generate valid JSON content from LLM for FAQ rewrite.");
+        }
+    }
+
+    public async generateEtsyShopNames(input: EtsyShopNameGeneratorInput): Promise<EtsyShopNameGeneratorOutput> {
+        const systemMsg = new SystemMessage(ETSY_SHOP_NAME_GENERATOR_SYSTEM_PROMPT);
+        const userMsg = new HumanMessage(getEtsyShopNameUserPrompt(input));
+
+        const response = await this.model.invoke([systemMsg, userMsg], {
+            response_format: { type: "json_object" }
+        });
+
+        const content = response.content as string;
+
+        try {
+            const parsed = JSON.parse(content);
+            return {
+                names: Array.isArray(parsed.names) ? parsed.names : [],
+            };
+        } catch {
+            console.error("Failed to parse Etsy Shop Name LLM response:", content);
+            throw new Error("Failed to generate valid JSON content from LLM for Etsy Shop Names.");
         }
     }
 }
