@@ -5,6 +5,7 @@ import PinterestGeneratorResult from "@/components/pinterest-title-description-g
 import PinterestGeneratorGuide from "@/components/pinterest-title-description-generator/PinterestGeneratorGuide";
 import PinterestGeneratorFAQ from "@/components/pinterest-title-description-generator/PinterestGeneratorFAQ";
 import { usePinterestTitleDescription } from "@/hooks/pinterest";
+import CTA from "@/components/common/CTA";
 
 export default function PinterestGeneratorPageContent() {
     const { mutate, isPending, data } = usePinterestTitleDescription();
@@ -32,6 +33,7 @@ export default function PinterestGeneratorPageContent() {
                         <PinterestGeneratorResult data={data} />
                     </section>
                 </div>
+                <CTA variant="card" className="mt-12"/>
                 <PinterestGeneratorGuide />
                 <PinterestGeneratorFAQ />
             </div>

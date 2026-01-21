@@ -5,7 +5,10 @@ import { etsyProfitCalculatorFaqList } from '@/components/etsy-profit-calculator
 
 export const metadata: Metadata = {
     title: 'Free Etsy Profit Calculator | Design Instantly',
-    description: 'Calculate your exact Etsy fees, profit margins, and actual earnings per sale with our free Etsy Profit Calculator. Updated for 2026 fees.'
+    description: 'Calculate your exact Etsy fees, profit margins, and actual earnings per sale with our free Etsy Profit Calculator. Updated for 2026 fees.',
+    alternates: {
+        canonical: 'https://www.designinstantly.com/free-tools/etsy-profit-calculator',
+    },
 };
 
 const jsonLd: Graph = {
@@ -15,7 +18,7 @@ const jsonLd: Graph = {
             '@type': 'WebApplication',
             name: 'Etsy Profit Calculator',
             description: 'A free tool to calculate Etsy fees, profit margins, and breakeven points for sellers.',
-            url: 'https://tools.designinstantly.com/etsy-profit-calculator',
+            url: 'https://www.designinstantly.com/free-tools/etsy-profit-calculator',
             image: 'https://designinstantly.com/free-tools/logo/png/icon_light.png',
             applicationCategory: 'BusinessApplication',
             operatingSystem: 'Any',
@@ -36,7 +39,7 @@ const jsonLd: Graph = {
             author: {
                 '@type': 'Organization',
                 name: 'Design Instantly',
-                url: 'https://designinstantly.com'
+                url: 'https://www.designinstantly.com'
             }
         },
         {

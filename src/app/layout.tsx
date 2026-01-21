@@ -4,20 +4,20 @@ import { Navbar } from "@/components/Navbar";
 import Providers from "@/components/Providers";
 import "./globals.css";
 import Footer from "@/components/common/Footer";
-import CTA from "@/components/common/CTA";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.designinstantly.com/free-tools"),
   title: {
     default: "Design Instantly Tools",
     template: "%s | Design Instantly Tools",
   },
-  description: "Free design tools for creators and developers.",
+  description: "Free tools for ecommerce sellers.",
   openGraph: {
     title: "Design Instantly Tools",
-    description: "Free design tools for creators and developers.",
-    url: "https://designinstantly.com",
+    description: "Free tools for ecommerce sellers.",
+    url: "https://www.designinstantly.com/free-tools",
     siteName: "Design Instantly",
     locale: "en_US",
     type: "website",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Design Instantly Tools",
-    description: "Free design tools for creators and developers.",
+    description: "Free tools for ecommerce sellers.",
   },
   icons: {
     icon: [
@@ -48,7 +48,6 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           {children}
-          <CTA />
           <Footer />
         </Providers>
       </body>

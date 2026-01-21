@@ -1,9 +1,24 @@
-
 import { ChatOpenAI } from "@langchain/openai";
 import { SystemMessage, HumanMessage } from "@langchain/core/messages";
 import { PinterestInput, PinterestOutput } from "@/types/pinterest";
 import { EtsyTitleDescriptionGeneratorInput, EtsyTitleDescriptionGeneratorOutput } from "@/types/etsy";
-import { SYSTEM_PROMPT, getUserPrompt, ETSY_TITLE_DESCRIPTION_SYSTEM_PROMPT, getEtsyTitleDescriptionUserPrompt } from "./prompts";
+import { EtsyBioGeneratorInput, EtsyBioGeneratorOutput } from "@/types/etsy/bio-generator";
+import { EtsyFaqGeneratorInput, EtsyFaqGeneratorOutput, EtsyFaqRewriteInput, EtsyFaqRewriteOutput } from "@/types/etsy/faq-generator";
+import { EtsyShopNameGeneratorInput, EtsyShopNameGeneratorOutput } from "@/types/etsy/shop-name-generator";
+import { 
+    SYSTEM_PROMPT, 
+    getUserPrompt, 
+    ETSY_TITLE_DESCRIPTION_SYSTEM_PROMPT, 
+    getEtsyTitleDescriptionUserPrompt,
+    ETSY_BIO_GENERATOR_SYSTEM_PROMPT,
+    getEtsyBioUserPrompt,
+    ETSY_FAQ_GENERATOR_SYSTEM_PROMPT,
+    getEtsyFaqUserPrompt,
+    ETSY_FAQ_REWRITE_SYSTEM_PROMPT,
+    getEtsyFaqRewriteUserPrompt,
+    ETSY_SHOP_NAME_GENERATOR_SYSTEM_PROMPT,
+    getEtsyShopNameUserPrompt
+} from "./prompts";
 
 class LLMService {
     private static instance: LLMService;
@@ -47,7 +62,7 @@ class LLMService {
                 description: parsed.description || "No description generated.",
                 hashtags: Array.isArray(parsed.hashtags) ? parsed.hashtags : [],
             };
-        } catch (error) {
+        } catch {
             console.error("Failed to parse LLM response:", content);
             throw new Error("Failed to generate valid JSON content from LLM.");
         }
@@ -70,9 +85,96 @@ class LLMService {
                 description: parsed.description || "No description generated.",
                 tags: Array.isArray(parsed.tags) ? parsed.tags : [],
             };
-        } catch (error) {
+        } catch {
             console.error("Failed to parse Etsy LLM response:", content);
             throw new Error("Failed to generate valid JSON content from LLM for Etsy.");
+        }
+    }
+
+    public async generateEtsyBio(input: EtsyBioGeneratorInput): Promise<EtsyBioGeneratorOutput> {
+        const systemMsg = new SystemMessage(ETSY_BIO_GENERATOR_SYSTEM_PROMPT);
+        const userMsg = new HumanMessage(getEtsyBioUserPrompt(input));
+
+        const response = await this.model.invoke([systemMsg, userMsg], {
+            response_format: { type: "json_object" }
+        });
+
+        const content = response.content as string;
+
+        try {
+            const parsed = JSON.parse(content);
+            return {
+                headline: parsed.headline || "Welcome to my shop",
+                fullBio: parsed.fullBio || "No bio generated.",
+            };
+        } catch {
+            console.error("Failed to parse Etsy Bio LLM response:", content);
+            throw new Error("Failed to generate valid JSON content from LLM for Etsy Bio.");
+        }
+    }
+
+    public async generateEtsyFaqs(input: EtsyFaqGeneratorInput): Promise<EtsyFaqGeneratorOutput> {
+        const systemMsg = new SystemMessage(ETSY_FAQ_GENERATOR_SYSTEM_PROMPT);
+        const userMsg = new HumanMessage(getEtsyFaqUserPrompt(input));
+
+        const response = await this.model.invoke([systemMsg, userMsg], {
+            response_format: { type: "json_object" }
+        });
+
+        const content = response.content as string;
+
+        try {
+            const parsed = JSON.parse(content);
+            return {
+                faqs: Array.isArray(parsed.faqs) ? parsed.faqs : [],
+            };
+        } catch {
+            console.error("Failed to parse Etsy FAQ LLM response:", content);
+            throw new Error("Failed to generate valid JSON content from LLM for Etsy FAQs.");
+        }
+    }
+
+    public async rewriteEtsyFaq(input: EtsyFaqRewriteInput): Promise<EtsyFaqRewriteOutput> {
+        const systemMsg = new SystemMessage(ETSY_FAQ_REWRITE_SYSTEM_PROMPT);
+        const userMsg = new HumanMessage(getEtsyFaqRewriteUserPrompt(input));
+
+        const response = await this.model.invoke([systemMsg, userMsg], {
+            response_format: { type: "json_object" }
+        });
+
+        const content = response.content as string;
+
+        try {
+            const parsed = JSON.parse(content);
+            return {
+                question: parsed.question || "Question",
+                answer: parsed.answer || "Answer",
+                category: parsed.category || "GENERAL",
+            };
+        } catch {
+            console.error("Failed to parse Etsy FAQ Rewrite LLM response:", content);
+            throw new Error("Failed to generate valid JSON content from LLM for FAQ rewrite.");
+        }
+    }
+
+    public async generateEtsyShopNames(input: EtsyShopNameGeneratorInput): Promise<EtsyShopNameGeneratorOutput> {
+        const systemMsg = new SystemMessage(ETSY_SHOP_NAME_GENERATOR_SYSTEM_PROMPT);
+        const userMsg = new HumanMessage(getEtsyShopNameUserPrompt(input));
+
+        const response = await this.model.invoke([systemMsg, userMsg], {
+            response_format: { type: "json_object" }
+        });
+
+        const content = response.content as string;
+
+        try {
+            const parsed = JSON.parse(content);
+            return {
+                names: Array.isArray(parsed.names) ? parsed.names : [],
+            };
+        } catch {
+            console.error("Failed to parse Etsy Shop Name LLM response:", content);
+            throw new Error("Failed to generate valid JSON content from LLM for Etsy Shop Names.");
         }
     }
 }

@@ -2,3 +2,4 @@
 - [] Add badges for tone in "how to" guide.
 - [] sync navbar and footer from main website.
 - [] Improve System prompt. fix the bug where emojis are included despite being set to false
+- [] fix title

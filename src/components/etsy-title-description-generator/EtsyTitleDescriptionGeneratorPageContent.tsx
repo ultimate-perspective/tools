@@ -6,12 +6,13 @@ import { useEtsyTitleDescriptionGenerator } from "@/hooks/etsy";
 import EtsyGeneratorGuide from "./EtsyGeneratorGuide";
 import EtsyGeneratorGuidelines from "./EtsyGeneratorGuidelines";
 import EtsyGeneratorFAQ from "./EtsyGeneratorFAQ";
+import CTA from "@/components/common/CTA";
 
 export default function EtsyTitleDescriptionGeneratorPageContent() {
     const { mutate, isPending, data } = useEtsyTitleDescriptionGenerator();
 
     return (
-        <main className="min-h-screen bg-gray-50 dark:bg-black pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+        <main className="min-h-screen bg-gray-50 dark:bg-black pt-24 pb-12 px-4 sm:px-6 lg:px-8 ">
             <div className="max-w-7xl mx-auto">
                 <header className="text-center mb-12">
                     <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl mb-4">
@@ -33,6 +34,8 @@ export default function EtsyTitleDescriptionGeneratorPageContent() {
                         <EtsyTitleDescriptionGeneratorResult data={data || null} />
                     </section>
                 </div>
+
+                <CTA variant="card" className="mt-12"/>
 
                 <EtsyGeneratorGuide />
                 <EtsyGeneratorGuidelines />

@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Sparkles, Zap, Type, ShoppingBag, Calculator } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Type, ShoppingBag, Calculator, User, HelpCircle, Store } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import CTA from "@/components/common/CTA";
 
 const tools = [
     {
@@ -23,10 +24,34 @@ const tools = [
         isAvailable: true,
     },
     {
+        name: "Etsy Bio Generator",
+        description: "Generate a professional, SEO-optimized Etsy shop bio that tells your story and connects with buyers.",
+        href: "/etsy-bio-generator",
+        icon: User,
+        category: "Etsy",
+        isAvailable: true,
+    },
+    {
         name: "Etsy Profit Calculator",
         description: "Calculate your exact Etsy fees, profit margins, and actual earnings per sale.",
         href: "/etsy-profit-calculator",
         icon: Calculator,
+        category: "Etsy",
+        isAvailable: true,
+    },
+    {
+        name: "Etsy FAQ Generator",
+        description: "Generate professional FAQs for your shop to reduce buyer questions and build trust.",
+        href: "/etsy-faq-generator",
+        icon: HelpCircle,
+        category: "Etsy",
+        isAvailable: true,
+    },
+    {
+        name: "Etsy Shop Name Generator",
+        description: "Generate unique, memorable, and available Etsy shop names and SEO-friendly titles.",
+        href: "/etsy-shop-name-generator",
+        icon: Store,
         category: "Etsy",
         isAvailable: true,
     }
@@ -45,12 +70,12 @@ export function HomeContent() {
         <div className="min-h-screen bg-background">
             {/* Hero Section */}
             <section className="relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-muted/50 via-background to-background" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-muted/50 via-background to-background" />
                 <div className="relative mx-auto max-w-6xl px-4 pt-20 pb-16 sm:px-6 lg:px-8">
                     <div className="flex flex-col items-center text-center">
                         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-1.5 text-sm text-muted-foreground">
                             <Sparkles className="h-4 w-4" aria-hidden="true" />
-                            <span>100% Free Tools for Creators</span>
+                            <span>100% Free Tools for Ecommerce Sellers</span>
                         </div>
                         <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl text-balance">
                             Free Tools to Design
@@ -91,7 +116,7 @@ export function HomeContent() {
                             <dd className="text-3xl font-bold text-foreground">10K+</dd>
                         </div>
                         <div className="flex flex-col items-center gap-1 text-center">
-                            <dt className="text-sm font-medium text-muted-foreground">Happy Creators</dt>
+                            <dt className="text-sm font-medium text-muted-foreground">Happy Sellers</dt>
                             <dd className="text-3xl font-bold text-foreground">2K+</dd>
                         </div>
                         <div className="flex flex-col items-center gap-1 text-center">
@@ -173,6 +198,8 @@ export function HomeContent() {
                     ))}
                 </div>
             </section>
+
+            <CTA />
 
         </div>
     );

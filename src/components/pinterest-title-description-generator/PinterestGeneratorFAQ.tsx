@@ -17,7 +17,7 @@ export default function PinterestGeneratorFAQ() {
         },
         {
             question: "should I use hashtags on Pinterest?",
-            answer: "Some creators still do, some don’t. That’s why the toggle exists. Test both."
+            answer: "Some sellers still do, some don’t. That’s why the toggle exists. Test both."
         },
         {
             question: "can I choose different tones for different pins?",
