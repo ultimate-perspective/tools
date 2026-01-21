@@ -33,7 +33,7 @@ export default function EtsyAnnouncementGeneratorFAQ() {
     return (
         <Card className="mt-12 max-w-7xl mx-auto">
             <CardHeader>
-                <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
+                <h2 id="faq-heading" className="text-2xl font-bold">Frequently Asked Questions</h2>
             </CardHeader>
             <CardContent>
                 <Accordion type="single" collapsible className="w-full">
