@@ -6,15 +6,15 @@ const BASE_URL = 'https://www.designinstantly.com';
 const PAGE_URL = `${BASE_URL}/free-tools/etsy-shop-name-generator`;
 
 export const metadata: Metadata = {
-    title: 'Free Etsy Shop Name Generator | Creative Business Name Ideas',
-    description: 'Generate unique, memorable, and available Etsy shop names with our free AI tool. Get creative business name ideas and SEO-friendly shop titles instantly.',
-    keywords: ['etsy shop name generator', 'etsy business name', 'etsy store name ideas', 'creative shop names', 'brand name generator', 'etsy seo'],
+    title: 'Free Etsy Shop Name & Title Generator | Creative Business Ideas',
+    description: 'Generate unique, memorable, and available Etsy shop names and SEO-friendly titles with our free AI tool. Build your creative brand identity instantly.',
+    keywords: ['etsy shop name generator', 'etsy business name', 'etsy store name ideas', 'creative shop names', 'brand name generator', 'etsy seo', 'etsy shop titles', 'etsy tagline generator', 'shop title ideas'],
     alternates: {
         canonical: PAGE_URL,
     },
     openGraph: {
-        title: 'Free Etsy Shop Name Generator | Creative Business Name Ideas',
-        description: 'Generate unique, memorable, and available Etsy shop names with our free AI tool. Get creative business name ideas instantly.',
+        title: 'Free Etsy Shop Name & Title Generator | Creative Business Ideas',
+        description: 'Generate unique, memorable, and available Etsy shop names and SEO-friendly titles with our free AI tool. Build your creative brand identity instantly.',
         url: PAGE_URL,
         siteName: 'Design Instantly',
         type: 'website',
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Free Etsy Shop Name Generator',
-        description: 'Generate unique, memorable, and available Etsy shop names with our free AI tool.',
+        title: 'Free Etsy Shop Name & Title Generator',
+        description: 'Generate unique, memorable, and available Etsy shop names and SEO-friendly titles with our free AI tool.',
     },
     robots: {
         index: true,
@@ -36,7 +36,7 @@ const webAppSchema: WithContext<WebApplication> = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: 'Free Etsy Shop Name Generator',
-    description: 'Generate unique, memorable, and available Etsy shop names with our free AI tool. Get creative business name ideas and SEO-friendly shop titles instantly.',
+    description: 'Generate unique, memorable, and available Etsy shop names and SEO-friendly titles with our free AI tool. Build your creative brand identity instantly.',
     url: PAGE_URL,
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Any',
@@ -65,8 +65,8 @@ const webAppSchema: WithContext<WebApplication> = {
 const howToSchema: WithContext<HowTo> = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: 'How to Choose an Etsy Shop Name',
-    description: 'Learn how to generate and choose the perfect Etsy shop name using our free AI tool.',
+    name: 'How to Choose an Etsy Shop Name & Title',
+    description: 'Learn how to generate and choose the perfect Etsy shop name and matching title using our free AI tool.',
     totalTime: 'PT2M',
     tool: {
         '@type': 'HowToTool',

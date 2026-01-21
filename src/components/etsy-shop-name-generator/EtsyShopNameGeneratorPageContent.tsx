@@ -23,7 +23,7 @@ export default function EtsyShopNameGeneratorPageContent() {
                         Free Etsy Shop Name Generator
                     </h1>
                     <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                        Generate unique, memorable, and SEO-friendly Etsy shop names in seconds. Find the perfect brand name for your creative business.
+                        Generate unique, memorable, and SEO-friendly Etsy shop names and matching titles in seconds. Find the perfect brand identity for your creative business.
                     </p>
                 </header>
 
