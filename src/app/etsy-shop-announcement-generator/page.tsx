@@ -140,6 +140,14 @@ const faqSchema: WithContext<FAQPage> = {
         },
         {
             '@type': 'Question',
+            name: "What are Etsy's rules for shop announcements?",
+            acceptedAnswer: {
+                '@type': 'Answer',
+                text: "Etsy requires announcements to follow their Content Policy: no spam, misleading claims, or prohibited items promotion. Keep it professional, relevant to your shop, and avoid excessive ALL CAPS or special characters. Focus on genuine updates, not keyword stuffing."
+            }
+        },
+        {
+            '@type': 'Question',
             name: 'How long should my Etsy announcement be?',
             acceptedAnswer: {
                 '@type': 'Answer',

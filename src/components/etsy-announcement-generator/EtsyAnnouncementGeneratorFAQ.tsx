@@ -16,6 +16,10 @@ const faqs = [
         answer: "Your announcement appears directly under your shop banner on your main Etsy homepage. It's one of the first things visitors see when they land on your shop."
     },
     {
+        question: "What are Etsy's rules for shop announcements?",
+        answer: "Etsy requires announcements to follow their Content Policy: no spam, misleading claims, or prohibited items promotion. Keep it professional, relevant to your shop, and avoid excessive ALL CAPS or special characters. Focus on genuine updates, not keyword stuffing."
+    },
+    {
         question: "How long should my Etsy announcement be?",
         answer: "Keep it scannable! This tool generates 1-3 sentence announcements (100-250 characters) because shoppers skim quickly. Only the first few lines show before a 'Read more' click."
     },
