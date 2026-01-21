@@ -117,49 +117,49 @@ const howToSchema: WithContext<HowTo> = {
     ]
 };
 
-// FAQ Schema - All 5 FAQs from the component
+// FAQ Schema - Synced with component FAQs
 const faqSchema: WithContext<FAQPage> = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: [
         {
             '@type': 'Question',
-            name: 'Where does the shop announcement appear?',
+            name: 'What are the 3 tone modes?',
             acceptedAnswer: {
                 '@type': 'Answer',
-                text: "Your shop announcement appears directly under your shop banner on your main shop homepage. It's one of the first things visitors see."
+                text: 'The generator creates announcements in 3 styles: Hype Mode (exciting, for sales/launches), Calm Mode (gentle, for handmade/wellness shops), and Pro Mode (polished, for premium brands).'
             }
         },
         {
             '@type': 'Question',
-            name: 'How often should I update my announcement?',
+            name: 'Where does my shop announcement appear on Etsy?',
             acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Update it whenever you have news! Important times include: seasonal sales, new product launches, vacation notices, or changes to shipping/return policies.'
+                text: "Your announcement appears directly under your shop banner on your main Etsy homepage. It's one of the first things visitors see when they land on your shop."
             }
         },
         {
             '@type': 'Question',
-            name: 'How long can an Etsy shop announcement be?',
+            name: 'How long should my Etsy announcement be?',
             acceptedAnswer: {
                 '@type': 'Answer',
-                text: "There isn't a strict character limit, but only the first few lines are visible before a 'Read more' click. Keep critical info in the first 1-2 sentences."
+                text: "Keep it scannable! This tool generates 1-3 sentence announcements (100-250 characters) because shoppers skim quickly. Only the first few lines show before a 'Read more' click."
             }
         },
         {
             '@type': 'Question',
-            name: 'Does the announcement affect Etsy SEO?',
+            name: 'Does my shop announcement help with Etsy SEO?',
             acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Yes! The text in your shop announcement is crawled by search engines (like Google). Including relevant keywords can help your shop get found.'
+                text: 'Yes! The text is crawled by Google and Etsy search. Our tool naturally integrates 2-3 high-intent keywords without stuffing, helping your shop get discovered.'
             }
         },
         {
             '@type': 'Question',
-            name: 'Is this tool free?',
+            name: 'Is this announcement generator free?',
             acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Yes, this Etsy Shop Announcement Generator is completely free. Use it as often as you like to keep your shop fresh.'
+                text: "Yes, it's 100% free! Generate as many announcements as you need for sales, new products, vacation notices, or policy updates."
             }
         }
     ]
