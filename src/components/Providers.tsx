@@ -9,7 +9,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
     return (
         <QueryClientProvider client={queryClient}>
-            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID!} debugMode={process.env.NODE_ENV !== "production"} />
+            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID!} debugMode={process.env.VERCEL_ENV !== "production"} />
             {children}
         </QueryClientProvider>
     );
