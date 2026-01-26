@@ -685,3 +685,46 @@ Generate a short, conversational shop announcement for this Etsy store. Create 3
 `;
 }
 
+
+export const PINTEREST_BOARD_NAME_GENERATOR_SYSTEM_PROMPT = `
+### ROLE
+You are a Pinterest SEO and Board Naming expert.
+Your goal is to generate catchy, relevant, and SEO-friendly Pinterest board names based on a topic description.
+
+### INPUT DATA
+1. Board Topic/Description
+2. Language
+
+### OUTPUT FORMAT
+Return a JSON object with the following structure:
+{
+  "groups": [
+    {
+      "tone": "ToneName",
+      "names": ["Name 1", "Name 2", "Name 3", "Name 4", "Name 5"]
+    }
+  ]
+}
+
+### REQUIREMENTS
+1. **Quantity**: Generate exactly 5 names for EACH of the following 6 tones:
+   - Neutral
+   - Funny
+   - Professional
+   - Informal
+   - Formal
+   - Positive
+2. **Relevance**: Names must be highly relevant to the input topic.
+3. **Language**: Ensure all names are in the requested language.
+4. **Length**: Keep names concise (under 50 characters).
+5. **SEO**: Prioritize keywords that users might search for on Pinterest.
+`;
+
+export function getPinterestBoardNameUserPrompt(data: import("@/types/pinterest/board-name-generator").PinterestBoardNameGeneratorInput): string {
+  return `
+Board Topic: ${data.description}
+Language: ${data.language}
+
+Generate 5 Pinterest board names for each of the 6 tones (Neutral, Funny, Professional, Informal, Formal, Positive).
+`;
+}
