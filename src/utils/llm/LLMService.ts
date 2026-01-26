@@ -5,10 +5,10 @@ import { EtsyTitleDescriptionGeneratorInput, EtsyTitleDescriptionGeneratorOutput
 import { EtsyBioGeneratorInput, EtsyBioGeneratorOutput } from "@/types/etsy/bio-generator";
 import { EtsyFaqGeneratorInput, EtsyFaqGeneratorOutput, EtsyFaqRewriteInput, EtsyFaqRewriteOutput } from "@/types/etsy/faq-generator";
 import { EtsyShopNameGeneratorInput, EtsyShopNameGeneratorOutput } from "@/types/etsy/shop-name-generator";
-import { 
-    SYSTEM_PROMPT, 
-    getUserPrompt, 
-    ETSY_TITLE_DESCRIPTION_SYSTEM_PROMPT, 
+import {
+    SYSTEM_PROMPT,
+    getUserPrompt,
+    ETSY_TITLE_DESCRIPTION_SYSTEM_PROMPT,
     getEtsyTitleDescriptionUserPrompt,
     ETSY_BIO_GENERATOR_SYSTEM_PROMPT,
     getEtsyBioUserPrompt,
@@ -17,7 +17,9 @@ import {
     ETSY_FAQ_REWRITE_SYSTEM_PROMPT,
     getEtsyFaqRewriteUserPrompt,
     ETSY_SHOP_NAME_GENERATOR_SYSTEM_PROMPT,
-    getEtsyShopNameUserPrompt
+    getEtsyShopNameUserPrompt,
+    ETSY_ANNOUNCEMENT_GENERATOR_SYSTEM_PROMPT,
+    getEtsyAnnouncementUserPrompt
 } from "./prompts";
 
 class LLMService {
@@ -175,6 +177,26 @@ class LLMService {
         } catch {
             console.error("Failed to parse Etsy Shop Name LLM response:", content);
             throw new Error("Failed to generate valid JSON content from LLM for Etsy Shop Names.");
+        }
+    }
+    public async generateEtsyAnnouncement(input: import("@/types/etsy/announcement-generator").EtsyAnnouncementGeneratorInput): Promise<import("@/types/etsy/announcement-generator").EtsyAnnouncementGeneratorOutput> {
+        const systemMsg = new SystemMessage(ETSY_ANNOUNCEMENT_GENERATOR_SYSTEM_PROMPT);
+        const userMsg = new HumanMessage(getEtsyAnnouncementUserPrompt(input));
+
+        const response = await this.model.invoke([systemMsg, userMsg], {
+            response_format: { type: "json_object" }
+        });
+
+        const content = response.content as string;
+
+        try {
+            const parsed = JSON.parse(content);
+            return {
+                variations: Array.isArray(parsed.variations) ? parsed.variations : [],
+            };
+        } catch {
+            console.error("Failed to parse Etsy Announcement LLM response:", content);
+            throw new Error("Failed to generate valid JSON content from LLM for Etsy Announcement.");
         }
     }
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Sparkles, Zap, Type, ShoppingBag, Calculator, User, HelpCircle, Store } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Type, ShoppingBag, Calculator, User, HelpCircle, Store, Megaphone } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import CTA from "@/components/common/CTA";
@@ -52,6 +52,14 @@ const tools = [
         description: "Generate unique, memorable, and available Etsy shop names and SEO-friendly titles.",
         href: "/etsy-shop-name-generator",
         icon: Store,
+        category: "Etsy",
+        isAvailable: true,
+    },
+    {
+        name: "Etsy Shop Announcement Generator",
+        description: "Generate professional shop updates, policy changes, and sale announcements in multiple styles.",
+        href: "/etsy-shop-announcement-generator",
+        icon: Megaphone,
         category: "Etsy",
         isAvailable: true,
     }

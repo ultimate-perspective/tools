@@ -113,3 +113,26 @@ export function useEtsyShopNameGenerator() {
         mutationFn: generateEtsyShopNames,
     });
 }
+
+async function generateEtsyAnnouncement(data: import("@/types/etsy/announcement-generator").EtsyAnnouncementGeneratorInput): Promise<import("@/types/etsy/announcement-generator").EtsyAnnouncementGeneratorOutput> {
+    const response = await fetch("/free-tools/api/etsy/shop-announcement-generator", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to generate Etsy announcement");
+    }
+
+    return response.json();
+}
+
+export function useEtsyAnnouncementGenerator() {
+    return useMutation({
+        mutationFn: generateEtsyAnnouncement,
+    });
+}
+
