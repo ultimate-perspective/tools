@@ -5,6 +5,8 @@ import { EtsyTitleDescriptionGeneratorInput, EtsyTitleDescriptionGeneratorOutput
 import { EtsyBioGeneratorInput, EtsyBioGeneratorOutput } from "@/types/etsy/bio-generator";
 import { EtsyFaqGeneratorInput, EtsyFaqGeneratorOutput, EtsyFaqRewriteInput, EtsyFaqRewriteOutput } from "@/types/etsy/faq-generator";
 import { EtsyShopNameGeneratorInput, EtsyShopNameGeneratorOutput } from "@/types/etsy/shop-name-generator";
+import { PinterestBoardNameGeneratorInput, PinterestBoardNameGeneratorOutput } from "@/types/pinterest/board-name-generator";
+
 import {
     SYSTEM_PROMPT,
     getUserPrompt,
@@ -19,8 +21,11 @@ import {
     ETSY_SHOP_NAME_GENERATOR_SYSTEM_PROMPT,
     getEtsyShopNameUserPrompt,
     ETSY_ANNOUNCEMENT_GENERATOR_SYSTEM_PROMPT,
-    getEtsyAnnouncementUserPrompt
+    getEtsyAnnouncementUserPrompt,
+    PINTEREST_BOARD_NAME_GENERATOR_SYSTEM_PROMPT,
+    getPinterestBoardNameUserPrompt
 } from "./prompts";
+
 
 class LLMService {
     private static instance: LLMService;
@@ -199,6 +204,28 @@ class LLMService {
             throw new Error("Failed to generate valid JSON content from LLM for Etsy Announcement.");
         }
     }
+
+    public async generatePinterestBoardNames(input: PinterestBoardNameGeneratorInput): Promise<PinterestBoardNameGeneratorOutput> {
+        const systemMsg = new SystemMessage(PINTEREST_BOARD_NAME_GENERATOR_SYSTEM_PROMPT);
+        const userMsg = new HumanMessage(getPinterestBoardNameUserPrompt(input));
+
+        const response = await this.model.invoke([systemMsg, userMsg], {
+            response_format: { type: "json_object" }
+        });
+
+        const content = response.content as string;
+
+        try {
+            const parsed = JSON.parse(content);
+            return {
+                groups: Array.isArray(parsed.groups) ? parsed.groups : [],
+            };
+        } catch {
+            console.error("Failed to parse Pinterest Board Name LLM response:", content);
+            throw new Error("Failed to generate valid JSON content from LLM for Pinterest Board Names.");
+        }
+    }
+
 }
 
 export const llmService = LLMService.getInstance();

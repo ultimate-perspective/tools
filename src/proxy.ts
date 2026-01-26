@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
     // 1. Prioritize X-Forwarded-Host to get the true original domain
     // 2. Fallback to the standard Host header
     const host = (

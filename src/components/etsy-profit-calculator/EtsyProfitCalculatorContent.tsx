@@ -86,8 +86,8 @@ export default function EtsyProfitCalculatorContent() {
                     </aside>
                 </div>
 
-                <CTA variant="card" className="mt-12"/>
-                
+                <CTA variant="card" className="mt-12" />
+
                 <EtsyProfitCalculatorGuide />
                 <EtsyProfitCalculatorFAQ />
 

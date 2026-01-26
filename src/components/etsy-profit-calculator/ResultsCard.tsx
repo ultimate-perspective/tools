@@ -31,10 +31,10 @@ export default function ResultsCard({ results, onReset }: ResultsCardProps) {
     }
 
     // Determine colors
-    const profitColor = results.netProfit > 0 
-        ? "text-green-600" 
-        : results.netProfit < 0 
-            ? "text-red-600" 
+    const profitColor = results.netProfit > 0
+        ? "text-green-600"
+        : results.netProfit < 0
+            ? "text-red-600"
             : "text-gray-900 dark:text-gray-100"
 
     return (

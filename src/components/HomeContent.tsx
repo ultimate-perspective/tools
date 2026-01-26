@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Sparkles, Zap, Type, ShoppingBag, Calculator, User, HelpCircle, Store, Megaphone } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Type, ShoppingBag, Calculator, User, HelpCircle, Store, Megaphone, LayoutGrid } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import CTA from "@/components/common/CTA";
@@ -61,6 +61,14 @@ const tools = [
         href: "/etsy-shop-announcement-generator",
         icon: Megaphone,
         category: "Etsy",
+        isAvailable: true,
+    },
+    {
+        name: "Pinterest Board Name Generator",
+        description: "Generate aesthetic and SEO-friendly Pinterest board names in 10 unique tones.",
+        href: "/pinterest-board-name-generator",
+        icon: LayoutGrid,
+        category: "Pinterest",
         isAvailable: true,
     }
 ];

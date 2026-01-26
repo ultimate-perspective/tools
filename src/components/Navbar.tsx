@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import { Menu, Type, ShoppingBag, Calculator, Home, ArrowRight, X, User, HelpCircle } from "lucide-react";
+import { Menu, Type, ShoppingBag, Calculator, Home, ArrowRight, X, User, HelpCircle, LayoutGrid } from "lucide-react";
 import { useState, ElementType } from "react";
 import { cn } from "@/lib/utils";
 
@@ -126,6 +126,14 @@ export function Navbar() {
                                                 icon={Type}
                                                 onClick={() => setOpen(false)}
                                                 delay={1}
+                                            />
+                                            <MobileLink
+                                                href="/pinterest-board-name-generator"
+                                                label="Pinterest Board Names"
+                                                icon={LayoutGrid}
+                                                onClick={() => setOpen(false)}
+                                                isNew
+                                                delay={2}
                                             />
                                             <MobileLink
                                                 href="/etsy-listing-generator"
