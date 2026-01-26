@@ -70,6 +70,14 @@ const tools = [
         icon: LayoutGrid,
         category: "Pinterest",
         isAvailable: true,
+    },
+    {
+        name: "Aesthetic Pinterest Board Name Ideas",
+        description: "Discover curated aesthetic board names for Soft, Dark, Minimalist, and Fantasy vibes.",
+        href: "/pinterest-aesthetic-board-name-ideas",
+        icon: Sparkles,
+        category: "Pinterest",
+        isAvailable: true,
     }
 ];
 

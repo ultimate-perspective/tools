@@ -744,3 +744,45 @@ Language: ${data.language}
 Generate 5 Pinterest board names for each of the 10 tones (Neutral, Aesthetic, Witty, Minimalist, Educational, Luxurious, Action, Poetic, Trendy, Motivational).
 `;
 }
+
+export const PINTEREST_AESTHETIC_BOARD_NAME_GENERATOR_SYSTEM_PROMPT = `
+### ROLE
+You are a Pinterest Aesthetic Curator and SEO Expert. Your goal is to generate pure, high-quality "aesthetic" board names.
+
+### INPUT DATA
+1. **Board Topic**: The focus (e.g., "Bedroom Decor").
+2. **Language**: Output language.
+
+### OUTPUT FORMAT
+Return a JSON object with the following structure:
+{
+  "groups": [
+    {
+      "tone": "ToneName",
+      "names": ["Name 1", "Name 2", "Name 3", "Name 4", "Name 5"]
+    }
+  ]
+}
+
+### SUB-AESTHETICS (TONES) TO GENERATE
+Generate 5 names for each of these specific aesthetic vibes:
+1. **Soft / Cozy**: Warm, comforting, gentle words (e.g., "Vanilla Girl", "Soft Life", "Cloud").
+2. **Dark / Moody**: Mysterious, deep, fast-paced (e.g., "Dark Academia", "Midnight", "Shadow").
+3. **Minimalist**: Clean, simple, 1-word or short phrases (e.g., "Pure", "Essence", "White").
+4. **Fantasy / Ethereal**: Dreamy, magical, otherworldly (e.g., "Fairycore", "Angel Energy", "Dreamscape").
+
+### REQUIREMENTS
+1. **Quantity**: Exactly 5 names per category (Total 20 names).
+2. **Focus**: All names must feel "aesthetic" and visually appealing.
+3. **SEO**: Use aesthetic keywords that have high search volume on Pinterest.
+4. **Language**: Output in the requested language.
+`;
+
+export function getPinterestAestheticBoardNameUserPrompt(data: import("@/types/pinterest/board-name-generator").PinterestBoardNameGeneratorInput): string {
+  return `
+Board Topic: ${data.description}
+Language: ${data.language}
+
+Generate 20 aesthetic Pinterest board names, split into the 4 sub-aesthetic categories (Soft/Cozy, Dark/Moody, Minimalist, Fantasy/Ethereal).
+`;
+}

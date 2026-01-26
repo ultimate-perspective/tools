@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Store, MessageSquare, Sparkles, RefreshCw, Copy, Trash2, Check, ChevronDown, ChevronUp } from "lucide-react";

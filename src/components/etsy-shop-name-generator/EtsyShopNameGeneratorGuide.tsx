@@ -26,7 +26,7 @@ export default function EtsyShopNameGeneratorGuide() {
                         <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">3</div>
                         <h3 className="font-semibold">Check Availability</h3>
                         <p className="text-sm text-muted-foreground">
-                            Once you find a name you like, search for it on Etsy to ensure it's not already taken.
+                            Once you find a name you like, search for it on Etsy to ensure it&apos;s not already taken.
                         </p>
                     </div>
                     <div className="space-y-2">

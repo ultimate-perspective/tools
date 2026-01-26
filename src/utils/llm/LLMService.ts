@@ -23,7 +23,9 @@ import {
     ETSY_ANNOUNCEMENT_GENERATOR_SYSTEM_PROMPT,
     getEtsyAnnouncementUserPrompt,
     PINTEREST_BOARD_NAME_GENERATOR_SYSTEM_PROMPT,
-    getPinterestBoardNameUserPrompt
+    getPinterestBoardNameUserPrompt,
+    PINTEREST_AESTHETIC_BOARD_NAME_GENERATOR_SYSTEM_PROMPT,
+    getPinterestAestheticBoardNameUserPrompt
 } from "./prompts";
 
 
@@ -223,6 +225,27 @@ class LLMService {
         } catch {
             console.error("Failed to parse Pinterest Board Name LLM response:", content);
             throw new Error("Failed to generate valid JSON content from LLM for Pinterest Board Names.");
+        }
+    }
+
+    public async generatePinterestAestheticBoardNames(input: PinterestBoardNameGeneratorInput): Promise<PinterestBoardNameGeneratorOutput> {
+        const systemMsg = new SystemMessage(PINTEREST_AESTHETIC_BOARD_NAME_GENERATOR_SYSTEM_PROMPT);
+        const userMsg = new HumanMessage(getPinterestAestheticBoardNameUserPrompt(input));
+
+        const response = await this.model.invoke([systemMsg, userMsg], {
+            response_format: { type: "json_object" }
+        });
+
+        const content = response.content as string;
+
+        try {
+            const parsed = JSON.parse(content);
+            return {
+                groups: Array.isArray(parsed.groups) ? parsed.groups : [],
+            };
+        } catch {
+            console.error("Failed to parse Pinterest Aesthetic Board Name LLM response:", content);
+            throw new Error("Failed to generate valid JSON content from LLM for Pinterest Aesthetic Board Names.");
         }
     }
 

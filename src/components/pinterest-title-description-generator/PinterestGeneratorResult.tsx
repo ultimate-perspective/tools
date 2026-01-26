@@ -1,8 +1,8 @@
 "use client";
 
-import { usePinterestTitleDescription } from "@/hooks/pinterest";
+
 import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+
 import { Button } from "@/components/ui/button";
 import { Copy, Check, Sparkles } from "lucide-react";
 import { PinterestOutput } from "@/types/pinterest";

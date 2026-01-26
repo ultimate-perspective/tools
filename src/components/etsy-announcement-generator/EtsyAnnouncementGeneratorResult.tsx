@@ -1,7 +1,7 @@
 "use client";
 
 import { EtsyAnnouncementGeneratorOutput } from "@/types/etsy/announcement-generator";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Copy, Check, Sparkles, Leaf, Briefcase, RefreshCw, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";

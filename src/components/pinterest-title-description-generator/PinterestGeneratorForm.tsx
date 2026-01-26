@@ -12,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkle, X } from "lucide-react";
+import { Sparkle, X } from "lucide-react";
 import { LiaEtsy } from "react-icons/lia";
 import { SiShopify } from "react-icons/si";
 

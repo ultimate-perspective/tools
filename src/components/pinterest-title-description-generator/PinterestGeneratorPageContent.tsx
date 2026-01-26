@@ -18,7 +18,7 @@ export default function PinterestGeneratorPageContent() {
                         Pinterest Title & Description Generator
                     </h1>
                     <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                        Create viral-worthy Pinterest pins in seconds. Whether you're selling on Etsy, Shopify, or sharing your own manual creations, get optimized titles and descriptions tailored to your brand voice.
+                        Create viral-worthy Pinterest pins in seconds. Whether you&apos;re selling on Etsy, Shopify, or sharing your own manual creations, get optimized titles and descriptions tailored to your brand voice.
                     </p>
                 </header>
 
@@ -33,7 +33,7 @@ export default function PinterestGeneratorPageContent() {
                         <PinterestGeneratorResult data={data} />
                     </section>
                 </div>
-                <CTA variant="card" className="mt-12"/>
+                <CTA variant="card" className="mt-12" />
                 <PinterestGeneratorGuide />
                 <PinterestGeneratorFAQ />
             </div>

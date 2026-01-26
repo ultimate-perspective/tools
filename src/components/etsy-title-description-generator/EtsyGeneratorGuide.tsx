@@ -22,22 +22,22 @@ export default function EtsyGeneratorGuide() {
                         </h3>
                         <div className="pl-8 space-y-4">
                             <p className="text-muted-foreground">
-                                Start with the "What are you selling?" field. Be direct.
+                                Start with the &quot;What are you selling?&quot; field. Be direct.
                             </p>
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div className="p-4 bg-muted/50 rounded-lg border">
                                     <h4 className="font-medium mb-2">Good Examples</h4>
                                     <ul className="text-sm space-y-1 list-disc list-inside">
-                                        <li>"Ceramic coffee mug"</li>
-                                        <li>"Gold vermeil ring"</li>
-                                        <li>"Digital wedding planner"</li>
+                                        <li>&quot;Ceramic coffee mug&quot;</li>
+                                        <li>&quot;Gold vermeil ring&quot;</li>
+                                        <li>&quot;Digital wedding planner&quot;</li>
                                     </ul>
                                 </div>
                                 <div className="p-4 bg-muted/50 rounded-lg border">
                                     <h4 className="font-medium mb-2">Bad Examples</h4>
                                     <ul className="text-sm space-y-1 list-disc list-inside text-muted-foreground">
-                                        <li>"Cute gift" (Too vague)</li>
-                                        <li>"Cheap mug" (Focus on quality, not price)</li>
+                                        <li>&quot;Cute gift&quot; (Too vague)</li>
+                                        <li>&quot;Cheap mug&quot; (Focus on quality, not price)</li>
                                     </ul>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@ export default function EtsyGeneratorGuide() {
                         </h3>
                         <div className="pl-8">
                             <p className="text-muted-foreground">
-                                Use the "Key Details" and "Special Features" fields to give the AI the specific facts it needs to build a keyword-rich title.
+                                Use the &quot;Key Details&quot; and &quot;Special Features&quot; fields to give the AI the specific facts it needs to build a keyword-rich title.
                                 Think: Color, Material, Size, Style, and Technique.
                             </p>
                         </div>
