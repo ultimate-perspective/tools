@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import { Menu, Type, ShoppingBag, Calculator, Home, ArrowRight, X, User, HelpCircle, LayoutGrid } from "lucide-react";
+import { Menu, Type, ShoppingBag, Calculator, Home, ArrowRight, X, User, HelpCircle, LayoutGrid, Sparkles } from "lucide-react";
 import { useState, ElementType } from "react";
 import { cn } from "@/lib/utils";
 
@@ -22,14 +23,18 @@ export function Navbar() {
                                 onClick={() => setOpen(false)}
                                 className="block transition-transform duration-200 hover:scale-105 active:scale-95"
                             >
-                                <img
+                                <Image
                                     src="/free-tools/logo/png/logo_light.png"
                                     alt="Design Instantly Logo"
+                                    width={150}
+                                    height={40}
                                     className="h-10 w-auto dark:hidden"
                                 />
-                                <img
+                                <Image
                                     src="/free-tools/logo/png/logo_dark.png"
                                     alt="Design Instantly Logo"
+                                    width={150}
+                                    height={40}
                                     className="h-10 w-auto hidden dark:block"
                                 />
                             </Link>
@@ -82,14 +87,18 @@ export function Navbar() {
                                             onClick={() => setOpen(false)}
                                             className="flex items-center gap-2 transition-transform duration-200 hover:scale-105 active:scale-95"
                                         >
-                                            <img
+                                            <Image
                                                 src="/free-tools/logo/png/logo_light.png"
                                                 alt="Design Instantly Logo"
+                                                width={150}
+                                                height={40}
                                                 className="h-8 w-auto dark:hidden"
                                             />
-                                            <img
+                                            <Image
                                                 src="/free-tools/logo/png/logo_dark.png"
                                                 alt="Design Instantly Logo"
+                                                width={150}
+                                                height={40}
                                                 className="h-8 w-auto hidden dark:block"
                                             />
                                         </Link>
@@ -134,6 +143,13 @@ export function Navbar() {
                                                 onClick={() => setOpen(false)}
                                                 isNew
                                                 delay={2}
+                                            />
+                                            <MobileLink
+                                                href="/pinterest-aesthetic-board-name-ideas"
+                                                label="Aesthetic Board Names"
+                                                icon={Sparkles}
+                                                onClick={() => setOpen(false)}
+                                                delay={2.5}
                                             />
                                             <MobileLink
                                                 href="/etsy-listing-generator"

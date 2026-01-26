@@ -201,7 +201,7 @@ export default function EtsyBioGeneratorForm({ onGenerate, isPending }: EtsyBioG
                             className={!location ? getPlaceholderClass() : ""}
                             placeholder={PLACEHOLDERS.location[placeholderIndex]}
                         />
-                        <p className="text-xs text-muted-foreground">Where you're based. Helps with local SEO and buyer connection.</p>
+                        <p className="text-xs text-muted-foreground">Where you&apos;re based. Helps with local SEO and buyer connection.</p>
                     </div>
 
                     {/* Target Audience */}

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { EtsyFaqItem as FaqItemType, FAQ_CATEGORY_LABELS } from "@/types/etsy/faq-generator";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { RefreshCw, Copy, Trash2, Check, ChevronDown, ChevronUp } from "lucide-react";
@@ -70,7 +69,7 @@ export default function EtsyFaqItemComponent({
                     </div>
 
                     {/* Actions */}
-                    <div className="flex items-center gap-1 flex-shrink-0">
+                    <div className="flex items-center gap-1 shrink-0">
                         <Button
                             variant="outline"
                             size="sm"

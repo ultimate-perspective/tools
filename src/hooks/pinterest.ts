@@ -25,6 +25,28 @@ export function usePinterestBoardNameGenerator() {
     });
 }
 
+async function generatePinterestAestheticBoardNames(data: PinterestBoardNameGeneratorInput): Promise<PinterestBoardNameGeneratorOutput> {
+    const response = await fetch("/free-tools/api/pinterest/aesthetic-board-name-ideas", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to generate Pinterest aesthetic board names");
+    }
+
+    return response.json();
+}
+
+export function usePinterestAestheticBoardNameGenerator() {
+    return useMutation({
+        mutationFn: generatePinterestAestheticBoardNames,
+    });
+}
+
 
 /**
  * Custom hook to manage Pinterest content generation state.

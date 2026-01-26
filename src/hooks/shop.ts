@@ -26,7 +26,7 @@ export function useShopProducts(url: string, platform: 'etsy' | 'shopify') {
         try {
             const parsedUrl = new URL(url);
             isValidUrl = !!parsedUrl.protocol && !!parsedUrl.host;
-        } catch (e) {
+        } catch {
             isValidUrl = false;
         }
 
@@ -43,7 +43,7 @@ export function useShopProducts(url: string, platform: 'etsy' | 'shopify') {
                 if (isMounted) {
                     setResult({ data, isLoading: false, error: null });
                 }
-            } catch (err) {
+            } catch {
                 if (isMounted) {
                     setResult({
                         data: [],

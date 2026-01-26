@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { ShopFetchRequest, ShopFetchResponse, Product } from "@/types/shop";
+import { ShopFetchRequest, ShopFetchResponse } from "@/types/shop";
 import { EtsyAdapter } from "@/lib/adapters/etsy-adapter";
 import { ShopifyAdapter } from "@/lib/adapters/shopify-adapter";
 import { ShopAdapter } from "@/lib/adapters/shop-adapter";
@@ -33,9 +33,8 @@ export async function POST(request: Request) {
 
         return NextResponse.json(response);
 
-    } catch (error: any) {
-        console.error("Error fetching shop products:", error); // Keep simple console error
-        // Return a cleaner error message to client
-        return NextResponse.json({ error: error.message || "Failed to fetch products" }, { status: 500 });
+    } catch (error: unknown) {
+        console.error("Error fetching shop products:", error);
+        return NextResponse.json({ error: (error as Error).message || "Failed to fetch products" }, { status: 500 });
     }
 }

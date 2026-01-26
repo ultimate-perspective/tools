@@ -28,13 +28,13 @@ export default function EtsyGeneratorGuidelines() {
                         <li className="flex gap-3 text-sm text-muted-foreground">
                             <Check className="w-5 h-5 text-green-500 shrink-0" />
                             <span>
-                                <strong className="text-foreground">Short & Clear.</strong> While you have 140 chars, concise titles often convert better. Avoid "keyword salad".
+                                <strong className="text-foreground">Short & Clear.</strong> While you have 140 chars, concise titles often convert better. Avoid &quot;keyword salad&quot;.
                             </span>
                         </li>
                         <li className="flex gap-3 text-sm text-muted-foreground">
                             <X className="w-5 h-5 text-red-500 shrink-0" />
                             <span>
-                                <strong className="text-foreground">Don't repeat words.</strong> "Blue mug, ceramic mug, coffee mug" wastes space. "Blue Ceramic Coffee Mug" covers all bases.
+                                <strong className="text-foreground">Don&apos;t repeat words.</strong> &quot;Blue mug, ceramic mug, coffee mug&quot; wastes space. &quot;Blue Ceramic Coffee Mug&quot; covers all bases.
                             </span>
                         </li>
                         <li className="flex gap-3 text-sm text-muted-foreground">
@@ -64,13 +64,13 @@ export default function EtsyGeneratorGuidelines() {
                         <li className="flex gap-3 text-sm text-muted-foreground">
                             <Check className="w-5 h-5 text-green-500 shrink-0" />
                             <span>
-                                <strong className="text-foreground">Multi-word "Long Tail" Tags.</strong> "Gold ring" is too competitive. "Minimalist gold stacking ring" gets you found by specific buyers.
+                                <strong className="text-foreground">Multi-word &quot;Long Tail&quot; Tags.</strong> &quot;Gold ring&quot; is too competitive. &quot;Minimalist gold stacking ring&quot; gets you found by specific buyers.
                             </span>
                         </li>
                         <li className="flex gap-3 text-sm text-muted-foreground">
                             <X className="w-5 h-5 text-red-500 shrink-0" />
                             <span>
-                                <strong className="text-foreground">No Repetitive Tags.</strong> If "Blue Mug" is in your title, you don't need it as a tag (though it doesn't hurt). Focus on unique attributes not in the title.
+                                <strong className="text-foreground">No Repetitive Tags.</strong> If &quot;Blue Mug&quot; is in your title, you don&apos;t need it as a tag (though it doesn&apos;t hurt). Focus on unique attributes not in the title.
                             </span>
                         </li>
                     </ul>
