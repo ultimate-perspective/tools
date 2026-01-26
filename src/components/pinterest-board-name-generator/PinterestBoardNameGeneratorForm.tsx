@@ -69,7 +69,7 @@ export default function PinterestBoardNameGeneratorForm({ onGenerate, isPending 
                 </CardHeader>
                 <CardContent className="space-y-6">
                     <div className="grid gap-2">
-                        <Label htmlFor="description">What's this board about? <span className="text-red-500">*</span></Label>
+                        <Label htmlFor="description">What&apos;s this board about? <span className="text-red-500">*</span></Label>
                         <Textarea
                             id="description"
                             value={description}
@@ -78,7 +78,7 @@ export default function PinterestBoardNameGeneratorForm({ onGenerate, isPending 
                             placeholder={PLACEHOLDERS[placeholderIndex]}
                             required
                         />
-                        <p className="text-xs text-muted-foreground">Be specific about the content you'll pin to this board.</p>
+                        <p className="text-xs text-muted-foreground">Be specific about the content you&apos;ll pin to this board.</p>
                     </div>
 
                     <div className="grid gap-2">
@@ -111,6 +111,7 @@ export default function PinterestBoardNameGeneratorForm({ onGenerate, isPending 
                         shadow-[0px_0px_0px_4px_rgba(230,0,35,0.25)] 
                         cursor-pointer transition-all duration-300 overflow-hidden
                         hover:bg-[#E60023]
+                        focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 focus-visible:ring-[#E60023]/50
                         disabled:opacity-70 disabled:cursor-not-allowed
                         ${isPending ? "bg-[#E60023]" : ""}
                     `}

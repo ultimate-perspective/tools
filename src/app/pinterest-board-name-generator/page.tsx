@@ -45,6 +45,13 @@ const webAppSchema: WithContext<WebApplication> = {
         price: '0',
         priceCurrency: 'USD',
     },
+    featureList: [
+        'Generates names in 10 unique tones (Aesthetic, Witty, Minimalist, etc.)',
+        'One-click copy to clipboard',
+        'Visual preview cards',
+        'SEO-optimized name suggestions',
+        'Multi-language support'
+    ],
     browserRequirements: 'Requires JavaScript. Works on all modern browsers.',
     softwareVersion: '1.0',
     author: {
@@ -60,7 +67,12 @@ const howToSchema: WithContext<HowTo> = {
     '@type': 'HowTo',
     name: 'How to Choose the Perfect Pinterest Board Name',
     description: 'Learn how to generate and choose the perfect Pinterest board name using our free AI tool.',
-    totalTime: 'PT2M',
+    totalTime: 'PT1M',
+    estimatedCost: {
+        '@type': 'MonetaryAmount',
+        currency: 'USD',
+        value: '0'
+    },
     tool: {
         '@type': 'HowToTool',
         name: 'Pinterest Board Name Generator'
@@ -69,20 +81,26 @@ const howToSchema: WithContext<HowTo> = {
         {
             '@type': 'HowToStep',
             name: 'Enter Board Topic',
-            text: 'Descibe what your board will be about in the text area.',
+            text: 'Describe what your board will be about in the text area (e.g., "Small Bedroom Ideas" or "Healthy Dinner Recipes").',
             position: 1
         },
         {
             '@type': 'HowToStep',
             name: 'Select Language',
-            text: 'Choose your preferred language for the board names.',
+            text: 'Choose your preferred language for the board names from the dropdown menu.',
             position: 2
         },
         {
             '@type': 'HowToStep',
             name: 'Generate Names',
-            text: 'Click the generate button to get relevant board name ideas in different tones.',
+            text: 'Click the "Generate Names" button to create 60 unique name ideas across 10 different tones.',
             position: 3
+        },
+        {
+            '@type': 'HowToStep',
+            name: 'Review and Copy',
+            text: 'Browse the aesthetic cards and click any name to copy it to your clipboard.',
+            position: 4
         }
     ]
 };
