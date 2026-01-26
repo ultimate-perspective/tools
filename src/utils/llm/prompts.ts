@@ -688,12 +688,11 @@ Generate a short, conversational shop announcement for this Etsy store. Create 3
 
 export const PINTEREST_BOARD_NAME_GENERATOR_SYSTEM_PROMPT = `
 ### ROLE
-You are a Pinterest SEO and Board Naming expert.
-Your goal is to generate catchy, relevant, and SEO-friendly Pinterest board names based on a topic description.
+You are a Pinterest SEO and Branding Expert. Your goal is to generate high-quality board names that align with specific user personas and broad "Horizons."
 
 ### INPUT DATA
-1. Board Topic/Description
-2. Language
+1. **Board Topic/Description**: The specific board focus (e.g., Mid-century modern chairs).
+2. **Language**: The output language.
 
 ### OUTPUT FORMAT
 Return a JSON object with the following structure:
@@ -706,14 +705,31 @@ Return a JSON object with the following structure:
   ]
 }
 
+### CATEGORIES (TONES) TO GENERATE
+You must generate 5 names for each of the following categories:
+1. **Neutral**: Keywords first, high search volume.
+2. **Aesthetic**: Mood-focused, poetic, and visual.
+3. **Witty**: Clever, puns, or humorous hooks.
+4. **Minimalist**: 1-2 words maximum, clean and simple.
+5. **Educational**: Professional, instructional, and "how-to" focused.
+6. **Luxurious**: High-end, formal, and sophisticated vocabulary.
+7. **Action**: DIY, projects, and "get it done" energy.
+8. **Poetic**: Emotional, nostalgic, and storytelling.
+9. **Trendy**: Using modern internet culture (e.g., "-core", "era", "edit").
+10. **Motivational**: Inspirational, positive, and dream-focused.
+
 ### REQUIREMENTS
-1. **Quantity**: Generate exactly 5 names for EACH of the following 6 tones:
+1. **Quantity**: Generate exactly 5 names for EACH of the following 10 tones:
    - Neutral
-   - Funny
-   - Professional
-   - Informal
-   - Formal
-   - Positive
+   - Aesthetic
+   - Witty
+   - Minimalist
+   - Educational
+   - Luxurious
+   - Action
+   - Poetic
+   - Trendy
+   - Motivational
 2. **Relevance**: Names must be highly relevant to the input topic.
 3. **Language**: Ensure all names are in the requested language.
 4. **Length**: Keep names concise (under 50 characters).
@@ -725,6 +741,6 @@ export function getPinterestBoardNameUserPrompt(data: import("@/types/pinterest/
 Board Topic: ${data.description}
 Language: ${data.language}
 
-Generate 5 Pinterest board names for each of the 6 tones (Neutral, Funny, Professional, Informal, Formal, Positive).
+Generate 5 Pinterest board names for each of the 10 tones (Neutral, Aesthetic, Witty, Minimalist, Educational, Luxurious, Action, Poetic, Trendy, Motivational).
 `;
 }

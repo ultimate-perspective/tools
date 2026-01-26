@@ -16,35 +16,59 @@ const TONE_CONFIG: Record<PinterestBoardTone, { icon: React.ReactNode; color: st
         borderColor: "border-slate-200",
         bg: "bg-slate-50"
     },
-    Funny: {
+    Aesthetic: {
+        icon: <Sparkles className="w-5 h-5" />,
+        color: "text-rose-600",
+        borderColor: "border-rose-200",
+        bg: "bg-rose-50"
+    },
+    Witty: {
         icon: <Smile className="w-5 h-5" />,
         color: "text-orange-500",
         borderColor: "border-orange-200",
         bg: "bg-orange-50"
     },
-    Professional: {
+    Minimalist: {
+        icon: <Minus className="w-5 h-5" />,
+        color: "text-gray-900 dark:text-gray-100",
+        borderColor: "border-gray-200 dark:border-gray-700",
+        bg: "bg-gray-50 dark:bg-gray-800"
+    },
+    Educational: {
         icon: <Briefcase className="w-5 h-5" />,
         color: "text-blue-600",
         borderColor: "border-blue-200",
         bg: "bg-blue-50"
     },
-    Informal: {
-        icon: <Coffee className="w-5 h-5" />,
-        color: "text-emerald-600",
-        borderColor: "border-emerald-200",
-        bg: "bg-emerald-50"
+    Luxurious: {
+        icon: <Sparkles className="w-5 h-5" />,
+        color: "text-amber-600",
+        borderColor: "border-amber-200",
+        bg: "bg-amber-50"
     },
-    Formal: {
+    Action: {
+        icon: <Sparkles className="w-5 h-5" />,
+        color: "text-red-600",
+        borderColor: "border-red-200",
+        bg: "bg-red-50"
+    },
+    Poetic: {
         icon: <MessageCircle className="w-5 h-5" />,
         color: "text-purple-600",
         borderColor: "border-purple-200",
         bg: "bg-purple-50"
     },
-    Positive: {
+    Trendy: {
         icon: <Sparkles className="w-5 h-5" />,
         color: "text-pink-600",
         borderColor: "border-pink-200",
         bg: "bg-pink-50"
+    },
+    Motivational: {
+        icon: <Coffee className="w-5 h-5" />,
+        color: "text-emerald-600",
+        borderColor: "border-emerald-200",
+        bg: "bg-emerald-50"
     },
 };
 
@@ -84,8 +108,8 @@ export default function PinterestBoardNameGeneratorResult({ data }: PinterestBoa
                 </span>
             </div>
 
-            {/* Masonry-like grid using columns */}
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            {/* CSS Grid Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {data.groups.map((group) => {
                     const config = TONE_CONFIG[group.tone] || TONE_CONFIG.Neutral;
 
@@ -93,7 +117,7 @@ export default function PinterestBoardNameGeneratorResult({ data }: PinterestBoa
                         <div
                             key={group.tone}
                             className={cn(
-                                "break-inside-avoid mb-6 rounded-xl border-2 bg-white dark:bg-gray-900 transition-all duration-300 hover:shadow-lg overflow-hidden",
+                                "rounded-xl border-2 bg-white dark:bg-gray-900 transition-all duration-300 hover:shadow-lg overflow-hidden flex flex-col h-full",
                                 config.borderColor
                             )}
                         >

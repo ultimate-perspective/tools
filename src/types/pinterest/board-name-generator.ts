@@ -3,7 +3,17 @@ export interface PinterestBoardNameGeneratorInput {
     language: string;
 }
 
-export type PinterestBoardTone = 'Neutral' | 'Funny' | 'Professional' | 'Informal' | 'Formal' | 'Positive';
+export type PinterestBoardTone =
+    | 'Neutral'
+    | 'Aesthetic'
+    | 'Witty'
+    | 'Minimalist'
+    | 'Educational'
+    | 'Luxurious'
+    | 'Action'
+    | 'Poetic'
+    | 'Trendy'
+    | 'Motivational';
 
 export interface PinterestBoardToneGroup {
     tone: PinterestBoardTone;

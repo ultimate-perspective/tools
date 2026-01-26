@@ -67,7 +67,7 @@ export default function PinterestBoardNameGeneratorForm({ onGenerate, isPending 
                         Board Details
                     </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-6 pt-6">
+                <CardContent className="space-y-6">
                     <div className="grid gap-2">
                         <Label htmlFor="description">What's this board about? <span className="text-red-500">*</span></Label>
                         <Textarea
