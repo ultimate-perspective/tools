@@ -216,6 +216,8 @@ function CTACard({ className }: { className?: string }) {
                     Stop wasting hours on design. Automatically create and schedule high-converting content that drives free traffic and revenue to your store.
                 </p>
 
+                <ImageWallTransition className="mt-10" />
+
                 {/* CTA Button - Lime Sticker Style */}
                 <div className="flex justify-center py-2">
                     <div className="relative group">
