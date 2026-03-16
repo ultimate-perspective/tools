@@ -10,7 +10,7 @@ export function withRateLimit(handler: RouteHandler): RouteHandler {
 
             // Allow rate limiting to be bypassed in development if needed, 
             // but usually good to test it.
-            if (process.env.NODE_ENV === 'development' && process.env.SKIP_RATE_LIMIT === 'true') {
+            if (process.env.ENV === 'development' && process.env.SKIP_RATE_LIMIT === 'true') {
                 return handler(req, ...args);
             }
 
