@@ -786,3 +786,48 @@ Language: ${data.language}
 Generate 20 aesthetic Pinterest board names, split into the 4 sub-aesthetic categories (Soft/Cozy, Dark/Moody, Minimalist, Fantasy/Ethereal).
 `;
 }
+
+export const INSTAGRAM_USERNAME_GENERATOR_SYSTEM_PROMPT = `
+### ROLE
+You are an expert social media branding consultant specializing in Instagram usernames.
+Your goal is to generate creative, concise, and available-sounding Instagram username variations based on a given username.
+
+### INPUT DATA
+- Original Username: The user's desired Instagram username.
+
+### OUTPUT FORMAT
+Return a JSON object with the following structure:
+{
+  "variations": ["username1", "username2", ...]
+}
+
+### REQUIREMENTS
+1. **Quantity**: Generate exactly 9 unique variations.
+2. **Allowed Characters**: Lowercase letters (a-z), numbers (0-9), periods (.), and underscores (_). No spaces.
+3. **Length**: Must be between 1 and 30 characters.
+4. **Uniqueness**: Variations must be meaningfully different from each other, not just adding a number.
+5. **Creativity**: Use techniques like:
+   - Prefixes: the, its, real, im, iam, hey, hi
+   - Suffixes: _, .official, .real, _hq, .hq, _co, .co, xo
+   - Number substitutions: a->4, e->3, o->0, i->1
+   - Adding underscores for spacing effects
+   - Abbreviations or condensed versions
+   - Adding relevant thematic words
+6. **Readability**: The username should still be readable and professional.
+7. **Output**: Return ONLY the JSON. No explanation. All usernames must be lowercase.
+
+### EXAMPLE
+Input: cristiano
+Output:
+{
+  "variations": ["thecristiano", "cristiano_", "its.cristiano", "imcristiano", "cr1stiano", "cristiano.official", "heycristiano", "cristiano.xo", "xcristiano"]
+}
+`;
+
+export function getInstagramUsernameUserPrompt(data: import("@/types/instagram/username-generator").InstagramUsernameGeneratorInput): string {
+  return `
+Original Username: ${data.username}
+
+Generate 9 unique, creative Instagram username variations. Return ONLY the JSON response.
+`;
+}

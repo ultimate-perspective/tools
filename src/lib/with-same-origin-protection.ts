@@ -14,6 +14,7 @@ export function withSameOriginProtection(
         );
 
         if (!valid) {
+            console.log(`[SameOriginProtection] BLOCKING request. Origin: ${origin}, Referer: ${referer}, Allowed: ${allowedOrigins.join(", ")}`);
             return new NextResponse("Forbidden", { status: 403 });
         }
 

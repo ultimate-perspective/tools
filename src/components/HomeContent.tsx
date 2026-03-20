@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Sparkles, Zap, Type, ShoppingBag, Calculator, User, HelpCircle, Store, Megaphone, LayoutGrid } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Type, ShoppingBag, Calculator, User, HelpCircle, Store, Megaphone, LayoutGrid, Instagram } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import CTA from "@/components/common/CTA";
@@ -78,10 +78,18 @@ const tools = [
         icon: Sparkles,
         category: "Pinterest",
         isAvailable: true,
+    },
+    {
+        name: "Instagram Username Availability Checker",
+        description: "Instantly check if an Instagram username is available and generate creative AI-powered variations.",
+        href: "/instagram-username-availability-tool",
+        icon: Instagram,
+        category: "Instagram",
+        isAvailable: true,
     }
 ];
 
-const categories = ["All", "Pinterest", "Etsy"];
+const categories = ["All", "Pinterest", "Etsy", "Instagram"];
 
 export function HomeContent() {
     const [activeCategory, setActiveCategory] = useState("All");

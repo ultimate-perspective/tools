@@ -6,6 +6,7 @@ import { EtsyBioGeneratorInput, EtsyBioGeneratorOutput } from "@/types/etsy/bio-
 import { EtsyFaqGeneratorInput, EtsyFaqGeneratorOutput, EtsyFaqRewriteInput, EtsyFaqRewriteOutput } from "@/types/etsy/faq-generator";
 import { EtsyShopNameGeneratorInput, EtsyShopNameGeneratorOutput } from "@/types/etsy/shop-name-generator";
 import { PinterestBoardNameGeneratorInput, PinterestBoardNameGeneratorOutput } from "@/types/pinterest/board-name-generator";
+import { InstagramUsernameGeneratorInput, InstagramUsernameVariationsOutput } from "@/types/instagram/username-generator";
 
 import {
     SYSTEM_PROMPT,
@@ -25,7 +26,9 @@ import {
     PINTEREST_BOARD_NAME_GENERATOR_SYSTEM_PROMPT,
     getPinterestBoardNameUserPrompt,
     PINTEREST_AESTHETIC_BOARD_NAME_GENERATOR_SYSTEM_PROMPT,
-    getPinterestAestheticBoardNameUserPrompt
+    getPinterestAestheticBoardNameUserPrompt,
+    INSTAGRAM_USERNAME_GENERATOR_SYSTEM_PROMPT,
+    getInstagramUsernameUserPrompt
 } from "./prompts";
 
 
@@ -246,6 +249,27 @@ class LLMService {
         } catch {
             console.error("Failed to parse Pinterest Aesthetic Board Name LLM response:", content);
             throw new Error("Failed to generate valid JSON content from LLM for Pinterest Aesthetic Board Names.");
+        }
+    }
+
+    public async generateInstagramUsernames(input: InstagramUsernameGeneratorInput): Promise<InstagramUsernameVariationsOutput> {
+        const systemMsg = new SystemMessage(INSTAGRAM_USERNAME_GENERATOR_SYSTEM_PROMPT);
+        const userMsg = new HumanMessage(getInstagramUsernameUserPrompt(input));
+
+        const response = await this.model.invoke([systemMsg, userMsg], {
+            response_format: { type: "json_object" }
+        });
+
+        const content = response.content as string;
+
+        try {
+            const parsed = JSON.parse(content);
+            return {
+                variations: Array.isArray(parsed.variations) ? parsed.variations : [],
+            };
+        } catch {
+            console.error("Failed to parse Instagram Username LLM response:", content);
+            throw new Error("Failed to generate valid JSON content from LLM for Instagram usernames.");
         }
     }
 
