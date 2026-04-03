@@ -9,10 +9,10 @@ export function proxy(req: NextRequest) {
         ''
     ).toLowerCase();
 
-    const allowedHosts = new Set([
-        'designinstantly.com',
-        'www.designinstantly.com',
-    ]);
+      const allowedHosts = new Set([
+        "https://designinstantly.com",
+        "https://www.designinstantly.com",
+      ]);
 
     // If the original host is NOT one of our primary domains, block indexing
     if (!allowedHosts.has(host)) {
