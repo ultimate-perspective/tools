@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function proxy(req: NextRequest) {
-  // 1. Prioritize X-Forwarded-Host to get the true original domain
-  // 2. Fallback to the standard Host header
+  // 1. Prioritize our custom header, which is set by the landing proxy rewrite
+  // 2. Fallback to standard Host header
   const host = (
-    req.headers.get("x-forwarded-host") ||
+    req.headers.get("x-di-canonical-host") ||
     req.headers.get("host") ||
     ""
   ).toLowerCase();
