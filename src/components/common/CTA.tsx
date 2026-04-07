@@ -222,7 +222,7 @@ function CTACard({ className }: { className?: string }) {
                 <div className="flex justify-center py-2">
                     <div className="relative group">
                         <a
-                            href="/generate"
+                            href={process.env.NEXT_PUBLIC_LANDING_URL}
                             className="cursor-pointer flex items-center justify-center py-2 relative h-12 rounded-full border-2 border-black bg-brand px-8 text-lg font-bold text-white shadow-[5px_5px_0px_0px_#000000] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-[2px_2px_0px_0px_#000000] hover:bg-brand active:shadow-none active:translate-x-[5px] active:translate-y-[5px]"
                         >
                             Get Started for Free
